@@ -2,10 +2,6 @@ name: Sonarcube Code Quality Check
 on:
   # Trigger analysis when pushing in master or pull requests, and when creating
   # a pull request.
-  push:
-    branches:
-      - master
-      - dev
   pull_request:
     types:
       - opened
@@ -50,31 +46,3 @@ jobs:
 
       - name: Run Jest
         run: npm run test
-        continue-on-error: true
-
-      - name: Upload Testing Artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: reports
-          path: reports
-
-  sonarcloud:
-    name: SonarCloud
-    runs-on: ubuntu-latest
-    needs: testing
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-
-      - name: Download Testing Artifacts
-        uses: actions/download-artifact@v2
-        with:
-          name: reports
-          path: reports
-
-      - name: SonarCloud Scan
-        uses: sonarsource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
