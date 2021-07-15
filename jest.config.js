@@ -5,10 +5,11 @@ module.exports = {
   coverageReporters: [
     "lcov",
     "json",
+    "text-summary",
   ],
   collectCoverage: true,
   collectCoverageFrom: [
-    "^.+\\.(ts|tsx)?$"
+    "**/src/**"
   ],
   testResultsProcessor: "jest-sonar-reporter",
   maxWorkers: 1,

@@ -1,44 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
     <file path="C:\Users\joel\Documents\Git\clockify.js\tests\timeEntry.test.ts">
-        <testCase name="Get your time entries on workspace" duration="183"/>
-        <testCase name="Get a specific time entry on workspace" duration="93"/>
-        <testCase name="Add a new time entry to workspace &amp;&amp; Delete time entry from workspace" duration="363"/>
-        <testCase name="Add a new time entry for another user on workspace &amp;&amp; Delete time entry from workspace" duration="350"/>
-        <testCase name="Stop currently running timer on workspace" duration="2294"/>
-        <testCase name="Update time entry on workspace" duration="271"/>
+        <testCase name="Get your time entries on workspace" duration="186"/>
+        <testCase name="Get a specific time entry on workspace" duration="90"/>
+        <testCase name="Add a new time entry to workspace &amp;&amp; Delete time entry from workspace" duration="355"/>
+        <testCase name="Add a new time entry for another user on workspace &amp;&amp; Delete time entry from workspace" duration="372"/>
+        <testCase name="Stop currently running timer on workspace" duration="2270"/>
+        <testCase name="Update time entry on workspace" duration="275"/>
     </file>
     <file path="C:\Users\joel\Documents\Git\clockify.js\tests\project.test.ts">
-        <testCase name="Get all projects on workspace" duration="95"/>
-        <testCase name="Find project by ID" duration="87"/>
-        <testCase name="Add a new project to workspace &amp;&amp; Update project on workspace &amp;&amp; Delete project from workspace" duration="480"/>
-        <testCase name="Update project estimate - Time Estimate" duration="280"/>
+        <testCase name="Get all projects on workspace" duration="93"/>
+        <testCase name="Find project by ID" duration="92"/>
+        <testCase name="Add a new project to workspace &amp;&amp; Update project on workspace &amp;&amp; Delete project from workspace" duration="492"/>
+        <testCase name="Update project estimate - Time Estimate" duration="272"/>
         <testCase name="Update project estimate - Budget Estimate" duration="0"/>
-        <testCase name="Update project memberships" duration="114"/>
+        <testCase name="Update project memberships" duration="122"/>
         <testCase name="Update project template" duration="0"/>
     </file>
     <file path="C:\Users\joel\Documents\Git\clockify.js\tests\task.test.ts">
-        <testCase name="Find tasks on project" duration="89"/>
-        <testCase name="Find task on project by ID" duration="92"/>
-        <testCase name="Add a new task on project &amp;&amp; Delete task from project" duration="356"/>
-        <testCase name="Update task on project" duration="284"/>
+        <testCase name="Find tasks on project" duration="96"/>
+        <testCase name="Find task on project by ID" duration="90"/>
+        <testCase name="Add a new task on project &amp;&amp; Delete task from project" duration="360"/>
+        <testCase name="Update task on project" duration="267"/>
     </file>
     <file path="C:\Users\joel\Documents\Git\clockify.js\tests\client.test.ts">
         <testCase name="Find clients on workspace" duration="88"/>
-        <testCase name="Add a new client to workspace &amp; Delete client" duration="389"/>
-        <testCase name="Update a clients name" duration="168"/>
+        <testCase name="Add a new client to workspace &amp; Delete client" duration="323"/>
+        <testCase name="Update a clients name" duration="166"/>
     </file>
     <file path="C:\Users\joel\Documents\Git\clockify.js\tests\tags.test.ts">
-        <testCase name="Find tags on workspace" duration="87"/>
-        <testCase name="Add a new tag to workspace &amp;&amp; Delete tag" duration="345"/>
-        <testCase name="Update tag" duration="88"/>
+        <testCase name="Find tags on workspace" duration="84"/>
+        <testCase name="Add a new tag to workspace &amp;&amp; Delete tag" duration="339"/>
+        <testCase name="Update tag" duration="94"/>
     </file>
     <file path="C:\Users\joel\Documents\Git\clockify.js\tests\workspaces.test.ts">
-        <testCase name="Get all my workspaces" duration="275"/>
+        <testCase name="Get all my workspaces" duration="226"/>
     </file>
     <file path="C:\Users\joel\Documents\Git\clockify.js\tests\users.test.ts">
-        <testCase name="Get currently logged in user&apos;s info" duration="82"/>
-        <testCase name="Find all users on workspace" duration="220"/>
+        <testCase name="Get currently logged in user&apos;s info" duration="85"/>
+        <testCase name="Find all users on workspace" duration="94"/>
         <testCase name="Add user to workspace" duration="0"/>
         <testCase name="Update user&apos;s workspace status" duration="0"/>
         <testCase name="Remove user from workspace" duration="0"/>
