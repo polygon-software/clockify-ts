@@ -93,7 +93,7 @@ jobs:
   create-release:
     name: Auto-Release
     needs:
-      - increment-version
+      - build-application
     runs-on: ubuntu-latest
     steps:
       - name: Download Build Files
