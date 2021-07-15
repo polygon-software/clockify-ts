@@ -5,7 +5,6 @@ on:
   push:
     branches:
       - master    # Create a new release everytime we push to master
-      - release   # or a dedicated release branch
 
 jobs:
   increment-version:
@@ -106,8 +105,12 @@ jobs:
           name: dist
           path: dist
 
-      - name: Deploy NPM package
-        run: npm publish
+      - name: Publish NPM Package
+        run: |
+          npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
+          npm publish --ignore-scripts
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_SECRET }}
 
   create-release:
     name: Auto-Release
