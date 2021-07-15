@@ -10,7 +10,7 @@
   "scripts": {
     "build": "tsc",
     "test": "jest --runInBand",
-    "lint": "./node_modules/.bin/eslint src"
+    "lint": "./node_modules/.bin/eslint"
   },
   "repository": {
     "type": "git",

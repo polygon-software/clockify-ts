@@ -1,6 +1,6 @@
-import Clockify from "./../Clockify";
+import Clockify from "../src/Clockify";
 import {clockifyApiKey, testWorkspaceId, testUserEmail, testUserId} from "./utils";
-import {UserStatusEnum} from "../Types/UserType";
+import {UserStatusEnum} from "../src/Types/UserType";
 
 const clockify = new Clockify(clockifyApiKey);
 

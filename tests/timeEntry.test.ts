@@ -1,4 +1,4 @@
-import Clockify from "../Clockify";
+import Clockify from "../src/Clockify";
 import {
   clockifyApiKey,
   randomString,
@@ -8,7 +8,7 @@ import {
   testWorkspaceId
 } from "./utils";
 import { sub } from "date-fns";
-import type { NewTimeEntryType } from "../Types/NewTimeEntryType";
+import type { NewTimeEntryType } from "../src/Types/NewTimeEntryType";
 
 const clockify = new Clockify(clockifyApiKey);
 

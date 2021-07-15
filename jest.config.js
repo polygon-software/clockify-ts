@@ -1,11 +1,15 @@
 module.exports = {
   roots: [
-    "src",
+    "tests",
   ],
   coverageReporters: [
-    "json-summary",
+    "lcov",
+    "json",
   ],
-  silent: false,
+  collectCoverage: true,
+  collectCoverageFrom: [
+    "^.+\\.(ts|tsx)?$"
+  ],
   maxWorkers: 1,
   coverageDirectory: "./reports/coverage/",
   transform: {
