@@ -89,12 +89,6 @@ jobs:
           recursive: true
           dest: release.zip
 
-      - name: Upload release.zip
-        uses: actions/upload-artifact@v2
-        with:
-          name: release-zip
-          path: release.zip
-
       - name: Add release to Action Artifacts
         uses: actions/upload-artifact@v2
         with:
@@ -125,7 +119,7 @@ jobs:
       - name: Download release zip
         uses: actions/download-artifact@v2
         with:
-          name: release-zip
+          name: release.zip
       - name: Create Auto-Release
         uses: marvinpinto/action-automatic-releases@latest
         with:

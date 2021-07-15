@@ -1,9 +1,8 @@
-import ClockifyAPI, {IGettable, Query} from "../../../../../../Api";
-import TimeEntryType from "../../../../../../Types/TimeEntryType";
-import TimeEntry from "../../../TimeEntries/TimeEntry";
-import NewTimeEntryType from "../../../../../../Types/NewTimeEntryType";
+import ClockifyAPI, {IGettable, IPatchable, IPostable, Query} from "../../../../../../Api";
+import type { TimeEntryType } from "../../../../../../Types/TimeEntryType";
+import type { NewTimeEntryType } from "../../../../../../Types/NewTimeEntryType";
 
-export default class TimeEntries extends ClockifyAPI implements IGettable {
+export default class TimeEntries extends ClockifyAPI implements IGettable<TimeEntryType[]>, IPostable<TimeEntryType>, IPatchable<TimeEntryType> {
 
   workspaceId: string;
   userId: string;
@@ -21,8 +20,8 @@ export default class TimeEntries extends ClockifyAPI implements IGettable {
   /**
    * Gets a time entry for specified user on workspace.
    */
-  get(query: TimeEntryQuery = {}): Promise<Array<TimeEntryType>> {
-    return this.axiosGet(query);
+  get(query: TimeEntryQuery = {}): Promise<TimeEntryType[]> {
+    return this.axiosGet<TimeEntryType[]>(query);
   }
 
   /**
@@ -34,7 +33,7 @@ export default class TimeEntries extends ClockifyAPI implements IGettable {
    * (request example: {"end":"2019-02-07T14:00:07.000Z"}
    */
   post(data: NewTimeEntryType): Promise<TimeEntryType> {
-    return this.axiosPost(data, {});
+    return this.axiosPost<TimeEntryType>(data, {});
   }
 
   /**
@@ -44,7 +43,7 @@ export default class TimeEntries extends ClockifyAPI implements IGettable {
    * required field(s). You'll simply get "Entity not created" message.
    */
   patch(data: { end: Date }): Promise<TimeEntryType> {
-    return this.axiosPatch(data);
+    return this.axiosPatch<TimeEntryType>(data);
   }
 }
 

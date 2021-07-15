@@ -1,6 +1,6 @@
-import MembershipType from "./MembershipType";
+import type { MembershipType } from "./MembershipType";
 
-export default interface WorkspaceType {
+type WorkspaceType = {
   "hourlyRate": {
     "amount": number,
     "currency": string
@@ -45,4 +45,7 @@ export default interface WorkspaceType {
     "canSeeTracker": boolean,
     "featureSubscriptionType": string
   }
+}
+export {
+  WorkspaceType,
 }

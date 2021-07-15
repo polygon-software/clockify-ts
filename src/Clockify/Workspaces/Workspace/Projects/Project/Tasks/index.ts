@@ -1,7 +1,7 @@
 import ClockifyAPI, {IGettable, IPostable, Query} from "../../../../../../Api";
 import Task from "./Task";
-import TaskType from "../../../../../../Types/TaskType";
-import NewTaskType from "../../../../../../Types/NewTaskType";
+import type { TaskType } from "../../../../../../Types/TaskType";
+import type { NewTaskType } from "../../../../../../Types/NewTaskType";
 
 interface TaskQuery extends Query {
   "is-active"?: boolean,
@@ -10,7 +10,7 @@ interface TaskQuery extends Query {
   "page-size"?: number,
 }
 
-export default class Tasks extends ClockifyAPI implements IGettable, IPostable {
+export default class Tasks extends ClockifyAPI implements IGettable<TaskType[]>, IPostable<TaskType> {
 
   workspaceId: string;
   projectId: string;
@@ -32,7 +32,7 @@ export default class Tasks extends ClockifyAPI implements IGettable, IPostable {
   /**
    * Find tasks on project
    */
-  get(query: TaskQuery = {}): Promise<Array<TaskType>> {
+  get(query: TaskQuery = {}): Promise<TaskType[]> {
     return this.axiosGet(query);
   }
 

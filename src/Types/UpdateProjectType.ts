@@ -1,4 +1,4 @@
-export default interface UpdateProjectType {
+type UpdateProjectType = {
   "name": string,
   "clientId"?: string,
   "isPublic"?: boolean,
@@ -10,4 +10,7 @@ export default interface UpdateProjectType {
   "billable"?: boolean,
   "public"?: boolean,
   archived: boolean,
+}
+export {
+  UpdateProjectType,
 }

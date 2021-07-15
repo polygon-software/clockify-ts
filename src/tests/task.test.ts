@@ -1,7 +1,7 @@
 import Clockify from "../Clockify";
 import {clockifyApiKey, randomString, testProjectId, testTaskId, testWorkspaceId} from "./utils";
-import NewTaskType from "../Types/NewTaskType";
 import {TaskStatusEnum} from "../Types/TaskType";
+import type { NewTaskType } from "../Types/NewTaskType";
 
 const clockify = new Clockify(clockifyApiKey);
 

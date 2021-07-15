@@ -1,4 +1,4 @@
-import {MembershipStatusEnum, MembershipTypeEnum} from "./MembershipType";
+import type {MembershipStatusEnum, MembershipTypeEnum} from "./MembershipType";
 import {
   BudgetEstimateResetOptionEnum,
   BudgetEstimateTypeEnum,
@@ -6,7 +6,7 @@ import {
   TimeEstimateTypeEnum
 } from "./EstimateType";
 
-export default interface ProjectType {
+type ProjectType = {
   "id": string,
   "name": string,
   "hourlyRate": null | number,
@@ -43,4 +43,7 @@ export default interface ProjectType {
     "resetOption": null | BudgetEstimateResetOptionEnum,
     "active": boolean,
   } | null,
+}
+export {
+  ProjectType,
 }

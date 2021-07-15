@@ -1,9 +1,9 @@
 import ClockifyAPI, {IDeletable, IGettable, IPuttable} from "../../../../../../../Api";
-import TaskType from "../../../../../../../Types/TaskType";
-import NewTaskType from "../../../../../../../Types/NewTaskType";
+import type { TaskType } from "../../../../../../../Types/TaskType";
+import type { NewTaskType } from "../../../../../../../Types/NewTaskType";
 
 
-export default class Task extends ClockifyAPI implements IGettable, IPuttable, IDeletable {
+export default class Task extends ClockifyAPI implements IGettable<TaskType>, IPuttable<TaskType>, IDeletable<TaskType> {
 
   workspaceId: string;
   projectId: string;
@@ -24,21 +24,21 @@ export default class Task extends ClockifyAPI implements IGettable, IPuttable, I
    * Find task on project by ID
    */
   get(): Promise<TaskType> {
-    return this.axiosGet({});
+    return this.axiosGet<TaskType>({});
   }
 
   /**
    * Update task on project
    */
   put(data: NewTaskType): Promise<TaskType> {
-    return this.axiosPut(data, {});
+    return this.axiosPut<TaskType>(data, {});
   }
 
   /**
    * Delete task from project
    */
   delete(): Promise<TaskType> {
-    return this.axiosDelete({});
+    return this.axiosDelete<TaskType>({});
   }
 
 }

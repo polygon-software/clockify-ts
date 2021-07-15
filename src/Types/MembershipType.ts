@@ -10,7 +10,7 @@ export enum MembershipTypeEnum {
   usergroup = "USERGROUP",
   all = "ALL",
 }
-export default interface MembershipType {
+type MembershipType = {
   "hourlyRate"?: {
     "amount": number,
     "currency"?: string
@@ -23,4 +23,7 @@ export default interface MembershipType {
   "membershipType"?: MembershipTypeEnum,
   "targetId"?: string,
   "userId": string
+}
+export {
+  MembershipType,
 }

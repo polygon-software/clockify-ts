@@ -1,14 +1,8 @@
-import ClockifyAPI, {
-  IDeletable,
-  IGettable,
-  IPostable,
-  IPuttable,
-  Query
-} from "../../../../Api";
-import MemberType from "../../../../Types/MemberType";
-import UserType from "../../../../Types/UserType";
-import {NewUserType} from "../../../../Types/NewUserType";
+import ClockifyAPI, { IGettable, IPostable, Query } from "../../../../Api";
 import User from "./User";
+import {NewUserType} from "../../../../Types/NewUserType";
+import type { MemberType } from "../../../../Types/MemberType";
+import type { UserType } from "../../../../Types/UserType";
 
 interface UserQuery extends Query {
   "page"?: number,
@@ -23,7 +17,7 @@ interface UserQuery extends Query {
   "includeRoles"?: boolean,
 }
 
-export default class Users extends ClockifyAPI implements IGettable, IPostable {
+export default class Users extends ClockifyAPI implements IGettable<MemberType[]>, IPostable<UserType> {
 
   workspaceId: string;
 
@@ -43,8 +37,8 @@ export default class Users extends ClockifyAPI implements IGettable, IPostable {
   /**
    * Find all users on workspace
    */
-  get(query: UserQuery): Promise<Array<MemberType>> {
-    return this.axiosGet(query);
+  get(query: UserQuery): Promise<MemberType[]> {
+    return this.axiosGet<MemberType[]>(query);
   }
 
   /**
@@ -54,7 +48,7 @@ export default class Users extends ClockifyAPI implements IGettable, IPostable {
    * are limited by the number of paid user seats on that workspace.
    */
   post(data: NewUserType): Promise<UserType> {
-    return this.axiosPost(data, {});
+    return this.axiosPost<UserType>(data, {});
   }
 
 }

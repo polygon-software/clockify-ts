@@ -3,9 +3,42 @@ import ClockifyAPI, {
   IPostable,
   Query
 } from "../../../../Api";
-import ProjectType from "../../../../Types/ProjectType";
-import NewProjectType from "../../../../Types/NewProjectType";
+import type { ProjectType } from "../../../../Types/ProjectType";
+import type { NewProjectType } from "../../../../Types/NewProjectType";
 import Project from "./Project";
+
+export default class Projects extends ClockifyAPI implements  IGettable<ProjectType[]>, IPostable<ProjectType> {
+
+  workspaceId: string;
+
+  constructor(apiKey: string, workspaceId: string) {
+    super(apiKey);
+    this.workspaceId = workspaceId;
+  }
+
+  resourceSubPath(): string {
+    return `/workspaces/${this.workspaceId}/projects`;
+  }
+
+  withId(projectId: string): Project {
+    return new Project(this._apiKey, this.workspaceId, projectId);
+  }
+
+  /**
+   * Get all projects on workspace
+   * Find project by ID
+   */
+  get(query: ProjectsQuery = {}): Promise<ProjectType[]> {
+    return this.axiosGet<ProjectType[]>(query);
+  }
+
+  /**
+   * Add a new project to workspace
+   */
+  post(data: NewProjectType): Promise<ProjectType> {
+    return this.axiosPost<ProjectType>(data, {});
+  }
+}
 
 interface ProjectsQuery extends Query {
   /**
@@ -43,38 +76,4 @@ interface ProjectsQuery extends Query {
   "is-template"?: boolean,
   "sort-column"?: "NAME",
   "sort-order"?: "ASCENDING" | "DESCENDING",
-}
-
-export default class Projects extends ClockifyAPI implements  IGettable, IPostable {
-
-  workspaceId: string;
-
-  constructor(apiKey: string, workspaceId: string) {
-    super(apiKey);
-    this.workspaceId = workspaceId;
-  }
-
-  resourceSubPath(): string {
-    return `/workspaces/${this.workspaceId}/projects`;
-  }
-
-  withId(projectId: string): Project {
-    return new Project(this._apiKey, this.workspaceId, projectId);
-  }
-
-  /**
-   * Get all projects on workspace
-   * Find project by ID
-   */
-  get(query: ProjectsQuery = {}): Promise<Array<ProjectType>> {
-    return this.axiosGet(query);
-  }
-
-  /**
-   * Add a new project to workspace
-   */
-  post(data: NewProjectType): Promise<ProjectType> {
-    return this.axiosPost(data, {});
-  }
-
 }

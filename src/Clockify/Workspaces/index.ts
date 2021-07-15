@@ -1,8 +1,8 @@
 import ClockifyAPI, {IGettable} from "../../Api";
-import WorkspaceType from "../../Types/WorkspaceType";
 import Workspace from "./Workspace";
+import type { WorkspaceType } from "../../Types/WorkspaceType";
 
-export default class Workspaces extends ClockifyAPI implements IGettable {
+export default class Workspaces extends ClockifyAPI implements IGettable<WorkspaceType[]> {
 
   resourceSubPath(): string {
     return "/workspaces";
@@ -12,8 +12,8 @@ export default class Workspaces extends ClockifyAPI implements IGettable {
     return new Workspace(this._apiKey, workspaceId);
   }
 
-  get(): Promise<Array<WorkspaceType>> {
-    return this.axiosGet();
+  get(): Promise<WorkspaceType[]> {
+    return this.axiosGet<WorkspaceType[]>();
   }
 
 }

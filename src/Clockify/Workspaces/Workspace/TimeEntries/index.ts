@@ -1,10 +1,10 @@
 import ClockifyAPI, {IPostable} from "../../../../Api";
-import TimeEntryType from "../../../../Types/TimeEntryType";
 import TimeEntry from "./TimeEntry";
-import NewTimeEntryType from "../../../../Types/NewTimeEntryType";
+import type { NewTimeEntryType } from "../../../../Types/NewTimeEntryType";
+import type { TimeEntryType } from "../../../../Types/TimeEntryType";
 
 
-export default class TimeEntries extends ClockifyAPI implements IPostable {
+export default class TimeEntries extends ClockifyAPI implements IPostable<TimeEntryType> {
   workspaceId: string;
 
   constructor(apiKey: string, workspaceId: string) {
@@ -25,7 +25,7 @@ export default class TimeEntries extends ClockifyAPI implements IPostable {
    * "start" is the only mandatory field in this request.
    */
   post(data: NewTimeEntryType): Promise<TimeEntryType> {
-    return this.axiosPost(data, {});
+    return this.axiosPost<TimeEntryType>(data, {});
   }
 
 }

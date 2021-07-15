@@ -1,4 +1,7 @@
-export default interface UpdateClientType {
+type UpdateClientType = {
   name: string,
   archived: boolean,
+}
+export {
+  UpdateClientType,
 }

@@ -1,8 +1,8 @@
 import ClockifyAPI, {IGettable, Query} from "../../../../Api";
-import CustomFieldType from "../../../../Types/CustomFieldType";
+import type { CustomFieldType } from "../../../../Types/CustomFieldType";
 
 
-export default class CustomFields extends ClockifyAPI implements IGettable {
+export default class CustomFields extends ClockifyAPI implements IGettable<CustomFieldType[]> {
 
   workspaceId: string;
 
@@ -18,8 +18,8 @@ export default class CustomFields extends ClockifyAPI implements IGettable {
   /**
    * Get custom fields on workspace
    */
-  get(query: CustomFieldsQuery): Promise<Array<CustomFieldType>> {
-    return this.axiosGet(query);
+  get(query: CustomFieldsQuery): Promise<CustomFieldType[]> {
+    return this.axiosGet<CustomFieldType[]>(query);
   }
 }
 

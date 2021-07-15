@@ -1,8 +1,8 @@
 import ClockifyAPI, {IDeletable} from "../../../../../../../Api";
-import UserGroupType from "../../../../../../../Types/UserGroupType";
+import type { UserGroupType } from "../../../../../../../Types/UserGroupType";
 
 
-export default class User extends ClockifyAPI implements IDeletable {
+export default class User extends ClockifyAPI implements IDeletable<UserGroupType> {
 
   workspaceId: string;
   userGroupId: string;
@@ -23,6 +23,6 @@ export default class User extends ClockifyAPI implements IDeletable {
    * Remove user from group
    */
   delete(): Promise<UserGroupType> {
-    return this.axiosDelete({});
+    return this.axiosDelete<UserGroupType>({});
   }
 }

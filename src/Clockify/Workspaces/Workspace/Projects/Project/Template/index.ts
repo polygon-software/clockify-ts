@@ -1,8 +1,7 @@
 import ClockifyAPI, {IPatchable} from "../../../../../../Api";
-import EstimateType from "../../../../../../Types/EstimateType";
-import ProjectType from "../../../../../../Types/ProjectType";
+import type { ProjectType } from "../../../../../../Types/ProjectType";
 
-export default class Template extends ClockifyAPI implements IPatchable {
+export default class Template extends ClockifyAPI implements IPatchable<ProjectType> {
 
   workspaceId: string;
   projectId: string;
@@ -21,7 +20,7 @@ export default class Template extends ClockifyAPI implements IPatchable {
    * Update project template
    */
   patch(data: { isTemplate: boolean }): Promise<ProjectType> {
-    return this.axiosPatch(data, {});
+    return this.axiosPatch<ProjectType>(data, {});
   }
 
 }

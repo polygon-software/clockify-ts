@@ -2,7 +2,7 @@ export enum TaskStatusEnum {
   active = "ACTIVE",
   done = "DONE",
 }
-export default interface TaskType {
+type TaskType = {
   "assigneeIds": Array<string>,
   "estimate": string,
   "id": string,
@@ -18,4 +18,7 @@ export default interface TaskType {
     "currency": string
   },
   "status": TaskStatusEnum
+}
+export {
+  TaskType,
 }

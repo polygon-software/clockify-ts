@@ -1,7 +1,7 @@
-import UserType from "../../Types/UserType";
+import type { UserType } from "../../Types/UserType";
 import ClockifyAPI, {IGettable} from "../../Api";
 
-export default class Users extends ClockifyAPI implements IGettable {
+export default class Users extends ClockifyAPI implements IGettable<UserType> {
 
   resourceSubPath(): string {
     return "/user";
@@ -11,6 +11,6 @@ export default class Users extends ClockifyAPI implements IGettable {
    * Get currently logged in user's info
    */
   get(): Promise<UserType> {
-    return super.axiosGet();
+    return this.axiosGet<UserType>();
   }
 }

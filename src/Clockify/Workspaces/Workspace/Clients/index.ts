@@ -1,13 +1,8 @@
-import ClockifyAPI, {
-  IGettable,
-  IPostable,
-  Query
-} from "../../../../Api";
-import ClientType from "../../../../Types/ClientType";
-import NewClientType from "../../../../Types/NewClientType";
+import ClockifyAPI, { IGettable, IPostable, Query } from "../../../../Api";
+import type { ClientType } from "../../../../Types/ClientType";
 import Client from "./Client";
 
-export default class Clients extends ClockifyAPI implements IGettable, IPostable {
+export default class Clients extends ClockifyAPI implements IGettable<ClientType[]>, IPostable<ClientType> {
 
   workspaceId: string;
 
@@ -27,15 +22,15 @@ export default class Clients extends ClockifyAPI implements IGettable, IPostable
   /**
    * Find clients on workspace
    */
-  get(query: ClientQuery = {}): Promise<Array<ClientType>> {
-    return this.axiosGet(query);
+  get(query: ClientQuery = {}): Promise<ClientType[]> {
+    return this.axiosGet<ClientType[]>(query);
   }
 
   /**
    * Add a new client to workspace
    */
   post(data: { name: string }): Promise<ClientType> {
-    return this.axiosPost(data, {});
+    return this.axiosPost<ClientType>(data, {});
   }
 }
 
