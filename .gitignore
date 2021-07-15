@@ -62,4 +62,5 @@ node_modules/
 # dotenv environment variables file
 .env
 
-reports/coverage/lcov-report
+reports
+eslint_report.json
