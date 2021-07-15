@@ -1,9 +1,9 @@
 import ClockifyAPI, {IGettable, IPostable, Query} from "../../../../Api";
-import UserGroupType from "../../../../Types/UserGroupType";
 import UserGroup from "./UserGroup";
+import type { UserGroupType } from "../../../../Types/UserGroupType";
 
 
-export default class UserGroups extends ClockifyAPI implements IGettable, IPostable {
+export default class UserGroups extends ClockifyAPI implements IGettable<UserGroupType[]>, IPostable<UserGroupType> {
 
   workspaceId: string;
 
@@ -23,15 +23,15 @@ export default class UserGroups extends ClockifyAPI implements IGettable, IPosta
   /**
    * Find all groups on workspace
    */
-  get(query: UserGroupQuery): Promise<Array<UserGroupType>> {
-    return this.axiosGet(query);
+  get(query: UserGroupQuery): Promise<UserGroupType[]> {
+    return this.axiosGet<UserGroupType[]>(query);
   }
 
   /**
    * Add a new group to workspace
    */
   post(data: { name: string }): Promise<UserGroupType> {
-    return this.axiosPost(data);
+    return this.axiosPost<UserGroupType>(data);
   }
 
 }

@@ -1,4 +1,4 @@
-export default interface NewProjectType {
+type NewProjectType = {
   "name": string,
   "clientId"?: string,
   "isPublic"?: boolean,
@@ -6,4 +6,7 @@ export default interface NewProjectType {
   "note"?: string,
   "billable"?: boolean,
   "public"?: boolean,
+}
+export {
+  NewProjectType,
 }

@@ -1,3 +1,6 @@
-export default interface NewClientType {
+type NewClientType = {
   name: string,
+}
+export {
+  NewClientType,
 }

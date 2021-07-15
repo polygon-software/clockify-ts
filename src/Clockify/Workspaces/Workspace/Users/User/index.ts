@@ -1,9 +1,9 @@
 import ClockifyAPI, {IDeletable, IPuttable} from "../../../../../Api";
-import UserType from "../../../../../Types/UserType";
 import TimeEntries from "./TimeEntries";
+import {UserType} from "../../../../../Types/UserType";
 
 
-export default class User extends ClockifyAPI implements IPuttable, IDeletable {
+export default class User extends ClockifyAPI implements IPuttable<UserType>, IDeletable<null> {
 
   workspaceId: string;
   userId: string;
@@ -25,14 +25,14 @@ export default class User extends ClockifyAPI implements IPuttable, IDeletable {
   /**
    * Update user's workspace status
    */
-  put(data: { membershipStatus: "ACTIVE" | "INACTIVE" }) {
-    return this.axiosPut(data, {});
+  put(data: { membershipStatus: "ACTIVE" | "INACTIVE" }): Promise<UserType> {
+    return this.axiosPut<UserType>(data, {});
   }
 
   /**
    * Remove user from workspace
    */
-  delete() {
-    return this.axiosDelete({});
+  delete(): Promise<null> {
+    return this.axiosDelete<null>({});
   }
 }

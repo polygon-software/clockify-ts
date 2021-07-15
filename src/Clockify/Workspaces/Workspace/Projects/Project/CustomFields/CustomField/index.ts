@@ -1,7 +1,7 @@
 import ClockifyAPI, {IDeletable, IPatchable} from "../../../../../../../Api";
-import CustomFieldType from "../../../../../../../Types/CustomFieldType";
+import type { CustomFieldType } from "../../../../../../../Types/CustomFieldType";
 
-export default class CustomField extends ClockifyAPI implements IPatchable, IDeletable {
+export default class CustomField extends ClockifyAPI implements IPatchable<CustomFieldType>, IDeletable<CustomFieldType> {
 
   workspaceId: string;
   projectId: string;
@@ -22,13 +22,13 @@ export default class CustomField extends ClockifyAPI implements IPatchable, IDel
    * Update custom field on project
    */
   patch(data: { defaultValue: string, status: "INACTIVE" | "VISIBLE" | "INVISIBLE" }): Promise<CustomFieldType> {
-    return this.axiosPatch(data, {});
+    return this.axiosPatch<CustomFieldType>(data, {});
   }
 
   /**
    * Remove custom field from project
    */
   delete(): Promise<CustomFieldType> {
-    return this.axiosDelete({});
+    return this.axiosDelete<CustomFieldType>({});
   }
 }

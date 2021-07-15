@@ -1,11 +1,17 @@
 module.exports = {
   roots: [
-    "src",
+    "tests",
   ],
   coverageReporters: [
-    "json-summary",
+    "lcov",
+    "json",
+    "text-summary",
   ],
-  silent: false,
+  collectCoverage: true,
+  collectCoverageFrom: [
+    "**/src/**"
+  ],
+  testResultsProcessor: "jest-sonar-reporter",
   maxWorkers: 1,
   coverageDirectory: "./reports/coverage/",
   transform: {

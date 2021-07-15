@@ -1,6 +1,9 @@
-import UserType from "./UserType";
-import RoleType from "./RoleType";
+import type { UserType } from "./UserType";
+import type { RoleType } from "./RoleType";
 
-export default interface MemberType extends UserType {
+type MemberType = UserType & {
   "roles": Array<RoleType>
+}
+export {
+  MemberType,
 }

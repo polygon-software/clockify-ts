@@ -5,7 +5,6 @@ on:
   push:
     branches:
       - master    # Create a new release everytime we push to master
-      - release   # or a dedicated release branch
 
 jobs:
   increment-version:
@@ -89,12 +88,6 @@ jobs:
           recursive: true
           dest: release.zip
 
-      - name: Upload release.zip
-        uses: actions/upload-artifact@v2
-        with:
-          name: release-zip
-          path: release.zip
-
       - name: Add release to Action Artifacts
         uses: actions/upload-artifact@v2
         with:
@@ -106,14 +99,21 @@ jobs:
     needs: build-application
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
       - name: Download Build Files
         uses: actions/download-artifact@v2
         with:
           name: dist
           path: dist
 
-      - name: Deploy NPM package
-        run: npm publish
+      - name: Publish NPM Package
+        run: |
+          npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
+          npm publish --ignore-scripts
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_SECRET }}
 
   create-release:
     name: Auto-Release
@@ -125,7 +125,7 @@ jobs:
       - name: Download release zip
         uses: actions/download-artifact@v2
         with:
-          name: release-zip
+          name: release.zip
       - name: Create Auto-Release
         uses: marvinpinto/action-automatic-releases@latest
         with:

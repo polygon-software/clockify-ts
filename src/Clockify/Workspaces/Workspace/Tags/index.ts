@@ -1,5 +1,5 @@
 import ClockifyAPI, {IGettable, IPostable, Query} from "../../../../Api";
-import TagType from "../../../../Types/TagType";
+import type { TagType } from "../../../../Types/TagType";
 import Tag from "./Tag";
 
 interface TagsQuery extends Query {
@@ -9,7 +9,7 @@ interface TagsQuery extends Query {
   "page-size"?: number,
 }
 
-export default class Tags extends ClockifyAPI implements IGettable, IPostable {
+export default class Tags extends ClockifyAPI implements IGettable<TagType[]>, IPostable<TagType> {
   workspaceId: string;
 
   constructor(apiKey: string, workspaceId: string) {
@@ -28,7 +28,7 @@ export default class Tags extends ClockifyAPI implements IGettable, IPostable {
   /**
    * Find tags on workspace
    */
-  get(query?: TagsQuery): Promise<Array<TagType>> {
+  get(query?: TagsQuery): Promise<TagType[]> {
     return this.axiosGet(query);
   }
 

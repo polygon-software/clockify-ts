@@ -1,7 +1,7 @@
 import ClockifyAPI, {IDeletable, IPuttable} from "../../../../../Api";
-import TagType from "../../../../../Types/TagType";
+import type { TagType } from "../../../../../Types/TagType";
 
-export default class Tag extends ClockifyAPI implements IPuttable, IDeletable {
+export default class Tag extends ClockifyAPI implements IPuttable<TagType>, IDeletable<TagType> {
 
   workspaceId: string;
   tagId: string;
@@ -20,14 +20,14 @@ export default class Tag extends ClockifyAPI implements IPuttable, IDeletable {
    * Update tag
    */
   put(data: { name: string, archived?: boolean }): Promise<TagType> {
-    return this.axiosPut(data, {});
+    return this.axiosPut<TagType>(data, {});
   }
 
   /**
    * Delete tag
    */
   delete(): Promise<TagType> {
-    return this.axiosDelete({});
+    return this.axiosDelete<TagType>({});
   }
 
 }

@@ -1,4 +1,4 @@
-import Clockify from "../Clockify";
+import Clockify from "../src/Clockify";
 import {clockifyApiKey, testWorkspaceId, testClientId, randomString} from "./utils";
 
 const clockify = new Clockify(clockifyApiKey);

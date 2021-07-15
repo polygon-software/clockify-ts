@@ -1,9 +1,9 @@
 import ClockifyAPI, {IPostable} from "../../../../../../Api";
-import UserGroupType from "../../../../../../Types/UserGroupType";
 import User from "./User";
+import type { UserGroupType } from "../../../../../../Types/UserGroupType";
 
 
-export default class Users extends ClockifyAPI implements IPostable {
+export default class Users extends ClockifyAPI implements IPostable<UserGroupType> {
 
   workspaceId: string;
   userGroupId: string;
@@ -26,6 +26,6 @@ export default class Users extends ClockifyAPI implements IPostable {
    * Add users to group
    */
   post(data: { userId: string }): Promise<UserGroupType> {
-    return this.axiosPost(data, {});
+    return this.axiosPost<UserGroupType>(data, {});
   }
 }

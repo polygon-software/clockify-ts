@@ -16,7 +16,7 @@ export enum CustomFieldProjectDefaultValuesStatusEnum {
   visible = "VISBLE",
   invisible = "INVISIBLE",
 }
-export default interface CustomFieldType {
+type CustomFieldType = {
   "id": string,
   "workspaceId": string,
   "name": string,
@@ -34,4 +34,7 @@ export default interface CustomFieldType {
       status : CustomFieldProjectDefaultValuesStatusEnum,
     }
   ]
+}
+export {
+  CustomFieldType,
 }

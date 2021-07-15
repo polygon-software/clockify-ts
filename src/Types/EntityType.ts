@@ -1,4 +1,7 @@
-export default interface EntityType {
+type EntityType = {
   "id": string,
   "name": string,
+}
+export {
+  EntityType,
 }

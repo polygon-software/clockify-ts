@@ -1,4 +1,4 @@
-import MembershipType from "./MembershipType";
+import type { MembershipType } from "./MembershipType";
 export enum UserSettingsSummaryReportSettingsGroupEnum {
   project = "Project",
   client = "Client",
@@ -20,7 +20,7 @@ export enum UserStatusEnum {
   declined = "DECLINED",
   inactive = "INACTIVE",
 }
-export default interface UserType {
+type UserType = {
   "activeWorkspace": string,
   "defaultWorkspace": string,
   "email": string,
@@ -49,4 +49,7 @@ export default interface UserType {
     "weeklyUpdates": boolean,
   },
   "status": UserStatusEnum,
+}
+export {
+  UserType,
 }
