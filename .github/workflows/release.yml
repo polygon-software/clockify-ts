@@ -99,6 +99,9 @@ jobs:
     needs: build-application
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
       - name: Download Build Files
         uses: actions/download-artifact@v2
         with:
