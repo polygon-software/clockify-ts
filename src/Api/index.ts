@@ -2,7 +2,7 @@ import { stringify } from "qs";
 import axios, { AxiosInstance } from "axios";
 import ClockifyError from "../ClockifyError";
 
-const paramsSerializer = (params: any) => stringify(params, {
+const paramsSerializer = (params: unknown) => stringify(params, {
   arrayFormat: "repeat",
   serializeDate: (d: Date) => d.toISOString(),
 });
@@ -11,20 +11,20 @@ export interface Query {
   [name: string]: string | number | Date | boolean | Array<string> | Array<number> | null | undefined,
 }
 
-export interface IGettable {
-  get(query: Query): Promise<any>;
+export interface IGettable<T> {
+  get(query: Query): Promise<T>;
 }
-export interface IPostable {
-  post(data: Object, query: Query): Promise<any>;
+export interface IPostable<T> {
+  post(data: Record<string, unknown>, query: Query): Promise<T>;
 }
-export interface IPuttable {
-  put(data: Object, query: Query): Promise<any>;
+export interface IPuttable<T> {
+  put(data: Record<string, unknown>, query: Query): Promise<T>;
 }
-export interface IPatchable {
-  patch(data: Object, query: Query): Promise<any>;
+export interface IPatchable<T> {
+  patch(data: Record<string, unknown>, query: Query): Promise<T>;
 }
-export interface IDeletable {
-  delete(query: Query): Promise<any>;
+export interface IDeletable<T> {
+  delete(query: Query): Promise<T>;
 }
 
 export default class ClockifyAPI {
@@ -51,34 +51,32 @@ export default class ClockifyAPI {
     });
   }
 
-  axiosGet(query: Query = {}): Promise<any> {
-    const uri = this.resourceSubPath();
-    return this._api.get(uri, { params: query, paramsSerializer })
+  axiosGet<T>(query: Query = {}): Promise<T> {
+    return this._api.get<T>(this.resourceSubPath(), { params: query, paramsSerializer })
       .then(res => res.data)
       .catch(err => { throw new ClockifyError(err); });
   }
 
-  axiosPost(data = {}, query: Query = {}): Promise<any> {
-    console.log(data);
-    return this._api.post(this.resourceSubPath(), data, { params: query, paramsSerializer })
+  axiosPost<T>(data = {}, query: Query = {}): Promise<T> {
+    return this._api.post<T>(this.resourceSubPath(), data, { params: query, paramsSerializer })
       .then(res => res.data)
       .catch(err => { throw new ClockifyError(err); });
   }
 
-  axiosPut(data = {}, query: Query = {}): Promise<any> {
-    return this._api.put(this.resourceSubPath(), data, { params: query, paramsSerializer })
+  axiosPut<T>(data = {}, query: Query = {}): Promise<T> {
+    return this._api.put<T>(this.resourceSubPath(), data, { params: query, paramsSerializer })
       .then(res => res.data)
       .catch(err => { throw new ClockifyError(err); });
   }
 
-  axiosPatch(data = {}, query: Query = {}): Promise<any> {
-    return this._api.patch(this.resourceSubPath(), data, { params: query, paramsSerializer })
+  axiosPatch<T>(data = {}, query: Query = {}): Promise<T> {
+    return this._api.patch<T>(this.resourceSubPath(), data, { params: query, paramsSerializer })
       .then(res => res.data)
       .catch(err => { throw new ClockifyError(err); });
   }
 
-  axiosDelete(query: Query = {}): Promise<any> {
-    return this._api.delete(this.resourceSubPath(), { params: query, paramsSerializer })
+  axiosDelete<T>(query: Query = {}): Promise<T> {
+    return this._api.delete<T>(this.resourceSubPath(), { params: query, paramsSerializer })
       .then(res => res.data)
       .catch(err => { throw new ClockifyError(err); });
   }

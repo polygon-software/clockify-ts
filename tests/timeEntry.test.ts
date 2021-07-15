@@ -1,4 +1,4 @@
-import Clockify from "../Clockify";
+import Clockify from "../src/Clockify";
 import {
   clockifyApiKey,
   randomString,
@@ -7,8 +7,8 @@ import {
   testUserId,
   testWorkspaceId
 } from "./utils";
-import NewTimeEntryType from "../Types/NewTimeEntryType";
 import { sub } from "date-fns";
+import type { NewTimeEntryType } from "../src/Types/NewTimeEntryType";
 
 const clockify = new Clockify(clockifyApiKey);
 
@@ -48,7 +48,7 @@ test("Add a new time entry to workspace && Delete time entry from workspace", as
   expect(timeEntries[0].id).toBe(createdTimeEntry.id);
 
   // Delete time entry again
-  const deletedTimeEntry = await clockify.workspace.withId(testWorkspaceId).timeEntries.withId(createdTimeEntry.id).delete();
+  await clockify.workspace.withId(testWorkspaceId).timeEntries.withId(createdTimeEntry.id).delete();
 
   // Ensure time entry no longer exists on workspace
   const timeEntriesAfterDeletion = await clockify.workspace.withId(testWorkspaceId).users.withId(testUserId).timeEntries.get({
@@ -81,7 +81,7 @@ test("Add a new time entry for another user on workspace && Delete time entry fr
   expect(timeEntries[0].id).toBe(createdTimeEntry.id);
 
   // Delete time entry again
-  const deletedTimeEntry = await clockify.workspace.withId(testWorkspaceId).timeEntries.withId(createdTimeEntry.id).delete();
+  await clockify.workspace.withId(testWorkspaceId).timeEntries.withId(createdTimeEntry.id).delete();
 
   // Ensure time entry no longer exists on workspace
   const timeEntriesAfterDeletion = await clockify.workspace.withId(testWorkspaceId).users.withId(testUserId).timeEntries.get({
@@ -99,7 +99,7 @@ test("Stop currently running timer on workspace", async () => {
     taskId: testTaskId,
     tagIds: [testTagId],
   }
-  const createdTimeEntry = await clockify.workspace.withId(testWorkspaceId).users.withId(testUserId).timeEntries.post(entry);
+  await clockify.workspace.withId(testWorkspaceId).users.withId(testUserId).timeEntries.post(entry);
 
   // Wait for 5 seconds
   await new Promise(r => setTimeout(r, 2000));

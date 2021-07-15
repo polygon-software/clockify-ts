@@ -1,6 +1,6 @@
-import Clockify from "./../Clockify";
+import Clockify from "../src/Clockify";
 import {clockifyApiKey, testWorkspaceId, testUserEmail, testUserId} from "./utils";
-import {UserStatusEnum} from "../Types/UserType";
+import {UserStatusEnum} from "../src/Types/UserType";
 
 const clockify = new Clockify(clockifyApiKey);
 
@@ -28,8 +28,10 @@ test.skip("Update user's workspace status", async () => {
   const inactiveUser = await clockify.workspace.withId(testWorkspaceId).users.withId(testUserId).put({
     membershipStatus: UserStatusEnum.inactive,
   })
+  expect(inactiveUser.status).toBe(UserStatusEnum.inactive);
 })
 
 test.skip("Remove user from workspace", async () => {
   const deletedUser = await clockify.workspace.withId(testWorkspaceId).users.withId(testUserId).delete();
+  expect(deletedUser).toBe(null);
 })

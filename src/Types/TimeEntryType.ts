@@ -1,4 +1,4 @@
-export default interface TimeEntryType   {
+type TimeEntryType = {
   "billable": boolean,
   "description": string,
   "id": string,
@@ -19,4 +19,7 @@ export default interface TimeEntryType   {
     "value": string,
     "name": string
   }>
+}
+export {
+  TimeEntryType,
 }

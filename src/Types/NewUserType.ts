@@ -1,3 +1,6 @@
-export interface NewUserType {
+type NewUserType = {
   email: string,
+}
+export {
+  NewUserType,
 }

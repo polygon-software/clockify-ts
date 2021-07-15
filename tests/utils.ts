@@ -2,11 +2,11 @@ import {config as dotenvConfig} from "dotenv";
 
 dotenvConfig()
 
-export function randomString() {
+export function randomString(): string {
   return Math.random().toString(36).substring(7);
 }
 
-export function randomInt() {
+export function randomInt(): number {
   return Math.floor(Math.random() * 1000);
 }
 

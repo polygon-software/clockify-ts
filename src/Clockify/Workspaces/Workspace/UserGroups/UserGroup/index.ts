@@ -1,9 +1,9 @@
 import ClockifyAPI, {IDeletable, IPuttable} from "../../../../../Api";
-import UserGroupType from "../../../../../Types/UserGroupType";
 import Users from "./Users";
+import type { UserGroupType } from "../../../../../Types/UserGroupType";
 
 
-export default class UserGroup extends ClockifyAPI implements IPuttable, IDeletable {
+export default class UserGroup extends ClockifyAPI implements IPuttable<UserGroupType>, IDeletable<UserGroupType> {
 
   workspaceId: string;
   userGroupId: string;
@@ -18,7 +18,7 @@ export default class UserGroup extends ClockifyAPI implements IPuttable, IDeleta
     return `/workspaces/${this.workspaceId}/user-groups/${this.userGroupId}`;
   }
 
-  get users() {
+  get users(): Users {
     return new Users(this._apiKey, this.workspaceId, this.userGroupId);
   }
 
@@ -26,14 +26,14 @@ export default class UserGroup extends ClockifyAPI implements IPuttable, IDeleta
    * Update group name
    */
   put(data: { name: string }): Promise<UserGroupType> {
-    return this.axiosPut(data, {});
+    return this.axiosPut<UserGroupType>(data, {});
   }
 
   /**
    * Delete group
    */
   delete(): Promise<UserGroupType> {
-    return this.axiosDelete({});
+    return this.axiosDelete<UserGroupType>({});
   }
 
 

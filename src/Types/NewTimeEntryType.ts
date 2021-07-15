@@ -1,4 +1,4 @@
-export default interface NewTimeEntryType {
+type NewTimeEntryType = {
   "start"?: Date,
   "billable"?: boolean,
   "description": string,
@@ -10,4 +10,7 @@ export default interface NewTimeEntryType {
     "customFieldId" : string,
     "value": string,
   }>
+}
+export {
+  NewTimeEntryType,
 }

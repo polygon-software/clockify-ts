@@ -1,15 +1,13 @@
-import ClockifyAPI, {IDeletable, IGettable, IPostable, IPuttable, Query} from "../../../../../Api";
-import ProjectType from "../../../../../Types/ProjectType";
-import NewProjectType from "../../../../../Types/NewProjectType";
-import CustomField from "./CustomFields/CustomField";
+import ClockifyAPI, {IDeletable, IGettable, IPuttable, Query} from "../../../../../Api";
+import type { ProjectType } from "../../../../../Types/ProjectType";
 import CustomFields from "./CustomFields";
 import Estimate from "./Estimate";
 import Memberships from "./Memberships";
 import Tasks from "./Tasks";
 import Template from "./Template";
-import UpdateProjectType from "../../../../../Types/UpdateProjectType";
+import type { UpdateProjectType } from "../../../../../Types/UpdateProjectType";
 
-export default class Project extends ClockifyAPI implements IGettable, IPuttable, IDeletable {
+export default class Project extends ClockifyAPI implements IGettable<ProjectType>, IPuttable<ProjectType>, IDeletable<ProjectType> {
 
   workspaceId: string;
   projectId: string;
@@ -49,21 +47,21 @@ export default class Project extends ClockifyAPI implements IGettable, IPuttable
    * Find project by ID
    */
   get(): Promise<ProjectType> {
-    return this.axiosGet({});
+    return this.axiosGet<ProjectType>({});
   }
 
   /**
    * Update project on workspace
    */
   put(data: UpdateProjectType, query: UpdateProjectQuery = {}): Promise<ProjectType> {
-    return this.axiosPut(data, query);
+    return this.axiosPut<ProjectType>(data, query);
   }
 
   /**
    * Delete project from workspace
    */
   delete(): Promise<ProjectType> {
-    return this.axiosDelete({});
+    return this.axiosDelete<ProjectType>({});
   }
 
 }

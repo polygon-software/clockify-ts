@@ -1,4 +1,4 @@
-import Clockify from "../Clockify";
+import Clockify from "../src/Clockify";
 import {
   randomInt,
   randomString,
@@ -7,7 +7,7 @@ import {
   testUserId,
   testWorkspaceId
 } from "./utils";
-import {BudgetEstimateTypeEnum, TimeEstimateTypeEnum} from "../Types/EstimateType";
+import {BudgetEstimateTypeEnum, TimeEstimateTypeEnum} from "../src/Types/EstimateType";
 
 const clockify = new Clockify(clockifyApiKey);
 

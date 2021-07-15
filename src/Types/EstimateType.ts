@@ -13,7 +13,7 @@ export enum BudgetEstimateResetOptionEnum {
   monthly = "MONTHLY",
 }
 
-export default interface EstimateType {
+type EstimateType = {
   "timeEstimate"?: {
     "estimate"?: string,
     "type"?: TimeEstimateTypeEnum,
@@ -26,4 +26,7 @@ export default interface EstimateType {
     "active": boolean,
     "resetOption"?: null | BudgetEstimateResetOptionEnum
   }
+}
+export {
+  EstimateType,
 }
