@@ -96,6 +96,12 @@ jobs:
       - increment-version
     runs-on: ubuntu-latest
     steps:
+      - name: Download Build Files
+        uses: actions/download-artifact@v2
+        with:
+          name: dist
+          path: dist
+
       - name: Create Auto-Release
         uses: polygon-software/action-release@latest
         with:
