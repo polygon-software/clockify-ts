@@ -1,5 +1,5 @@
 {
-  "name": "clockify.js",
+  "name": "clockify-ts",
   "version": "1.2107.4",
   "description": "Clockify API wrapper in Typescript",
   "main": "dist/index.js",
