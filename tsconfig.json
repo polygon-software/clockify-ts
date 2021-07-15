@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "allowJs": false,
+    "alwaysStrict": true,
+    "strict": true,
+    "outDir": "dist/",
+    "allowSyntheticDefaultImports": true
+  },
+}

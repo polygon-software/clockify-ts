@@ -1,0 +1,24 @@
+import ClockifyAPI, {IPatchable} from "../../../../../Api";
+
+
+export default class Invoiced extends ClockifyAPI implements IPatchable {
+
+  workspaceId: string;
+
+  constructor(apiKey: string, workspaceId: string) {
+    super(apiKey);
+    this.workspaceId = workspaceId;
+  }
+
+  resourceSubPath(): string {
+    return `/workspaces/${this.workspaceId}/time-entries/invoiced`;
+  }
+
+  /**
+   * Mark time entries as invoiced
+   */
+  patch(data: { "timeEntryIds": Array<string>, "invoiced": boolean }): Promise<null> {
+    return this.axiosPatch(data, {});
+  }
+
+}

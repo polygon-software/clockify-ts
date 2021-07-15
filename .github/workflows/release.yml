@@ -1,0 +1,136 @@
+name: Create new Release
+on:
+  # schedule:
+  #   - cron: "* * * * 3" # Creates a new release every wednesday
+  push:
+    branches:
+      - master    # Create a new release everytime we push to master
+      - release   # or a dedicated release branch
+
+jobs:
+  increment-version:
+    name: Increment version
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Update Version Number
+        id: update_version_number
+        uses: polygon-software/npm-version-date@master
+        with:
+          schema: V.yyMM.P
+          V: '1'
+          increase-patch: true
+
+      - name: Commit new version number
+        uses: polygon-software/action-commit@master
+        with:
+          commit_message: New Build for production environmet
+          commit_options: '--no-verify --signoff'
+          file_pattern: package.json
+          commit_user_name: Bot (Autocommit Actions)
+          commit_user_email: actions@github.com
+          commit_author: Github Action <actions@github.com>
+          push_options: '--force'
+
+    outputs:
+      version: ${{ steps.update_version_number.outputs.version }}
+
+  build-application:
+    name: Build Application
+    needs: increment-version
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-build-${{ env.cache-name }}-
+            ${{ runner.OS }}-build-
+            ${{ runner.OS }}-
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build application
+        run: npm run build
+
+      - name: Upload Build Files
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: dist
+
+  zip-release:
+    runs-on: ubuntu-latest
+    needs: build-application
+    steps:
+      - name: Download Build Files
+        uses: actions/download-artifact@v2
+        with:
+          name: dist
+          path: dist
+
+      - name: Create release.zip
+        uses: papeloto/action-zip@v1
+        with:
+          files: dist
+          recursive: true
+          dest: release.zip
+
+      - name: Upload release.zip
+        uses: actions/upload-artifact@v2
+        with:
+          name: release-zip
+          path: release.zip
+
+      - name: Add release to Action Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: release.zip
+          path: release.zip
+
+  publish-npm:
+    name: Publish to NPM
+    needs: build-application
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Build Files
+        uses: actions/download-artifact@v2
+        with:
+          name: dist
+          path: dist
+
+      - name: Deploy NPM package
+        run: npm publish
+
+  create-release:
+    name: Auto-Release
+    needs:
+      - zip-release
+      - increment-version
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download release zip
+        uses: actions/download-artifact@v2
+        with:
+          name: release-zip
+      - name: Create Auto-Release
+        uses: marvinpinto/action-automatic-releases@latest
+        with:
+          repo_token: "${{ secrets.TRIGGER_RELEASE }}"
+          automatic_release_tag: latest
+          prerelease: false
+          title: "${{ needs.increment-version.outputs.version }}"
+          files: release.zip
