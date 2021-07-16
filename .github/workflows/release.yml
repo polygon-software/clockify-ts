@@ -5,38 +5,8 @@ on:
       - master    # Create a new release everytime we push to master
 
 jobs:
-  increment-version:
-    name: Increment version
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Update Version Number
-        id: update_version_number
-        uses: polygon-software/npm-version-date@master
-        with:
-          schema: V.yyMM.P
-          V: '1'
-          increase-patch: true
-
-      - name: Commit new version number
-        uses: polygon-software/action-commit@master
-        with:
-          commit_message: New Build for production environmet
-          commit_options: '--no-verify --signoff'
-          file_pattern: package.json
-          commit_user_name: Bot (Autocommit Actions)
-          commit_user_email: actions@github.com
-          commit_author: Github Action <actions@github.com>
-          push_options: '--force'
-
-    outputs:
-      version: ${{ steps.update_version_number.outputs.version }}
-
   build-application:
     name: Build Application
-    needs: increment-version
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -60,14 +30,27 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Update Version Number
+        id: update_version_number
+        uses: polygon-software/npm-version-date@master
+        with:
+          schema: V.yyMM.P
+          V: '1'
+          increase-patch: true
+
       - name: Build application
         run: npm run build
 
-      - name: Upload Build Files
-        uses: actions/upload-artifact@v2
+      - name: Commit build files
+        uses: polygon-software/action-commit@master
         with:
-          name: dist
-          path: dist
+          commit_message: New Build for production environmet
+          commit_options: '--no-verify --signoff'
+          file_pattern: .
+          commit_user_name: Bot (Autocommit Actions)
+          commit_user_email: actions@github.com
+          commit_author: Github Action <actions@github.com>
+          push_options: '--force'
 
   publish-npm:
     name: Publish to NPM
@@ -76,12 +59,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
-      - name: Download Build Files
-        uses: actions/download-artifact@v2
-        with:
-          name: dist
-          path: dist
 
       - name: Publish NPM Package
         run: |
@@ -92,16 +69,9 @@ jobs:
 
   create-release:
     name: Auto-Release
-    needs:
-      - build-application
+    needs: build-application
     runs-on: ubuntu-latest
     steps:
-      - name: Download Build Files
-        uses: actions/download-artifact@v2
-        with:
-          name: dist
-          path: dist
-
       - name: Create Auto-Release
         uses: polygon-software/action-release@latest
         with:
