@@ -63,8 +63,5 @@ node_modules/
 # dotenv environment variables file
 .env
 
-# Ignore output dirs
-dist
-
 reports
 eslint_report.json
