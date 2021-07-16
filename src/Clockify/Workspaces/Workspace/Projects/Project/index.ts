@@ -1,4 +1,4 @@
-import ClockifyAPI, {IDeletable, IGettable, IPuttable, Query} from "../../../../../Api";
+import ClockifyAPI, {IDeletable, IGettable, IPuttable} from "../../../../../Api";
 import type { ProjectType } from "../../../../../Types/ProjectType";
 import CustomFields from "./CustomFields";
 import Estimate from "./Estimate";
@@ -6,6 +6,7 @@ import Memberships from "./Memberships";
 import Tasks from "./Tasks";
 import Template from "./Template";
 import type { UpdateProjectType } from "../../../../../Types/UpdateProjectType";
+import UpdateProjectQuery from "../../../../../Queries/UpdateProjectQuery";
 
 export default class Project extends ClockifyAPI implements IGettable<ProjectType>, IPuttable<ProjectType>, IDeletable<ProjectType> {
 
@@ -64,11 +65,4 @@ export default class Project extends ClockifyAPI implements IGettable<ProjectTyp
     return this.axiosDelete<ProjectType>({});
   }
 
-}
-
-interface UpdateProjectQuery extends Query {
-  /**
-   * MANUAL type enables one fixed estimate for the whole project. AUTO type enables task-based project estimate. If AUTO is enabled, estimate duration doesn't matter.
-   */
-  "estimate-type"?: "MANUAL" | "AUTO",
 }

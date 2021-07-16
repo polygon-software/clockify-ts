@@ -1,4 +1,4 @@
-type ClientType  ={
+type ClientType = {
   id: string,
   name: string,
   workspaceId: string,

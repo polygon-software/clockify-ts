@@ -1,6 +1,7 @@
-import ClockifyAPI, { IGettable, IPostable, Query } from "../../../../Api";
-import type { ClientType } from "../../../../Types/ClientType";
+import ClockifyAPI, { IGettable, IPostable } from "../../../../Api";
 import Client from "./Client";
+import ClientsQuery from "../../../../Queries/ClientsQuery";
+import type { ClientType } from "../../../../Types/ClientType";
 
 export default class Clients extends ClockifyAPI implements IGettable<ClientType[]>, IPostable<ClientType> {
 
@@ -22,7 +23,7 @@ export default class Clients extends ClockifyAPI implements IGettable<ClientType
   /**
    * Find clients on workspace
    */
-  get(query: ClientQuery = {}): Promise<ClientType[]> {
+  get(query: ClientsQuery = {}): Promise<ClientType[]> {
     return this.axiosGet<ClientType[]>(query);
   }
 
@@ -32,19 +33,4 @@ export default class Clients extends ClockifyAPI implements IGettable<ClientType
   post(data: { name: string }): Promise<ClientType> {
     return this.axiosPost<ClientType>(data, {});
   }
-}
-
-interface ClientQuery extends Query {
-  /**
-   * If true, you'll get only archived clients. If false, you'll get only active clients.
-   */
-  archived?: boolean,
-  /**
-   * If provided, clients will be filtered by name
-   */
-  name?: string,
-  page?: number,
-  "page-size"?: number,
-  "sort-column"?: "NAME",
-  "sort-order"?: "ASCENDING" | "DESCENDING",
 }

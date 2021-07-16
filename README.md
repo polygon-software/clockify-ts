@@ -1,4 +1,8 @@
-# clockify.js - Typescript Wrapper for Clockify API
+# Clockify-ts - Typescript Wrapper for Clockify API
+
+<p align="center">
+  <img width="300" height="200" src="https://clockify.me//assets/images/clockify-logo.svg">
+</p>
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=polygon-software_clockify.js&metric=alert_status)](https://sonarcloud.io/dashboard?id=polygon-software_clockify.js)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=polygon-software_clockify.js&metric=coverage)](https://sonarcloud.io/dashboard?id=polygon-software_clockify.js)
@@ -8,6 +12,88 @@
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=polygon-software_clockify.js&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=polygon-software_clockify.js)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=polygon-software_clockify.js&metric=security_rating)](https://sonarcloud.io/dashboard?id=polygon-software_clockify.js)
 
+## Introduction
+
+Clockify-ts is an unofficial wrapper for the clockify API written in TypeScript.
+By using Clockify's REST-based API, you can push and pull data to and from Clockify, and integrate it with other systems.
+
+You can install this package using [NPM]()!
+
+```
+$ npm install clockify-ts
+```
+
+And import the package using require/import syntax:
+
+```typescript
+const Clockify = require("clockify-ts");
+// Alternatively
+import Clockify from "clockify-ts";
+```
+
+### Authentication
+
+All communication with the Clockify API needs to be authenticated using a Auth-Token. This token can be generated
+in the [User Settings](https://clockify.me/user/settings) page and needs to be passed to the clockify instance. 
+
+If your workspace is on a subdomain (eg. something.clockify.me), you'll need to generate a new API key in your Profile Settings that will work just for that workspace.
+
+If you're a self-hosted user, you'll have to use a different API base endpoint: "https://yourcustomdomain.com/api" and "https://yourdomain.com/reports" (you can find exact endpoints when you go to "https://youdomain.com/web/boot").
+
+```typescript
+import Clockify from "clockify-ts";
+
+const clockifyApiKey = "YOUR-API-KEY";
+const clockify = new Clockify("clockifyApiKey");
+```
+
+### Principles
+
+Clockify-ts wrapps all base API Endpoints from clockify. This is best illustrated using an example:
+
+```typescript
+import Clockify from "clockify-ts";
+
+const clockify = new Clockify("clockifyApiKey");
+
+// Endpoint: GET /workspaces/{workspaceId}/projects
+const projects = await clockify.workspace.withId("workspaceId").projects.get();
+```
+
+There are type definitions available for all return values and all possible query objects. The type definitions can be
+imported directly from the clockify-ts package:
+
+```typescript
+import Clockify from "clockify-ts";
+import type { ProjectType } from "clockify-ts";
+
+const project: ProjectType = {
+    id: "xxx"
+}
+```
+
+### Features
+
+The following clockify API features are already well implemented and tested. 
+
+#### Base Endpoints 
+
+- Client :heavy_check_mark:
+- Project :heavy_check_mark:
+- Tag :heavy_check_mark:
+- Task :heavy_check_mark:
+- Time Entry :heavy_check_mark:
+- User :heavy_check_mark:
+- Group: :x:
+- Workspace :heavy_check_mark:
+- Custom Fields :heavy_check_mark:
+
+#### Report Endpoints
+
+- Reports: :heavy_check_mark:
+- Shared Reports: :heavy_check_mark:
+
+# Examples / Documentation
 
 ## Client
 
@@ -16,8 +102,25 @@
 [API Documentation](https://clockify.me/developers-api#operation--v1-workspaces--workspaceId--clients-get)
 
 ```typescript
-const clockify = new Clockify(clockifyApiKey);
-const clients = await clockify.workspace.withId(testWorkspaceId).clients.get();
+import Clockify from "clockify-ts";
+import type { ClientType } from "clockify-ts";
+
+const clockify = new Clockify("clockifyApiKey");
+const clients: ClientType[] = await clockify.workspace.withId("workspaceId").clients.get();
+```
+
+Or with a more complex query:
+
+```typescript
+import Clockify, { ClientsQuery } from "clockify-ts";
+import type { ClientType } from "clockify-ts";
+
+const clockify = new Clockify("clockifyApiKey");
+const query: ClientsQuery = {
+    name: "Project Name",
+    page: 1,
+}
+const clients: ClientType[] = await clockify.workspace.withId("workspaceId").clients.get(query);
 ```
 
 ### Add a new client to workspace
@@ -25,8 +128,11 @@ const clients = await clockify.workspace.withId(testWorkspaceId).clients.get();
 [API Documentation](https://clockify.me/developers-api#operation--v1-workspaces--workspaceId--clients-post)
 
 ```typescript
-const clockify = new Clockify(clockifyApiKey);
-const client = await clockify.workspace.withId(testWorkspaceId).clients.post({ name });
+import Clockify from "clockify-ts";
+import type { ClientType } from "clockify-ts";
+
+const clockify = new Clockify("clockifyApiKey");
+const client: ClientType = await clockify.workspace.withId("workspaceId").clients.post({ name: "name" });
 ```
 
 ### Update client
@@ -34,8 +140,8 @@ const client = await clockify.workspace.withId(testWorkspaceId).clients.post({ n
 [API Documentation](https://clockify.me/developers-api#operation--v1-workspaces--workspaceId--clients--id--put)
 
 ```typescript
-const clockify = new Clockify(clockifyApiKey);
-const updatedClient = await clockify.workspace.withId(testWorkspaceId).clients.withId(clientId).put(client)
+const clockify = new Clockify("clockifyApiKey");
+const updatedClient = await clockify.workspace.withId("workspaceId").clients.withId("clientId").put(client)
 ```
 
 ### Delete client
@@ -43,8 +149,8 @@ const updatedClient = await clockify.workspace.withId(testWorkspaceId).clients.w
 [API Documentation](https://clockify.me/developers-api#operation--v1-workspaces--workspaceId--clients--clientId--delete)
 
 ```typescript
-const clockify = new Clockify(clockifyApiKey);
-const deleted_client = await clockify.workspace.withId(testWorkspaceId).clients.withId(clientId).delete();
+const clockify = new Clockify("clockifyApiKey");
+const deleted_client = await clockify.workspace.withId("workspaceId").clients.withId("clientId").delete();
 ```
 
 ## Project
@@ -54,8 +160,8 @@ const deleted_client = await clockify.workspace.withId(testWorkspaceId).clients.
 [API Documentation](https://clockify.me/developers-api#operation--v1-workspaces--workspaceId--projects-get)
 
 ```typescript
-const clockify = new Clockify(clockifyApiKey);
-const projects = await clockify.workspace.withId(testWorkspaceId).projects.get();
+const clockify = new Clockify("clockifyApiKey");
+const projects = await clockify.workspace.withId("workspaceId").projects.get();
 ```
 
 ### Find project by ID
@@ -63,8 +169,8 @@ const projects = await clockify.workspace.withId(testWorkspaceId).projects.get()
 [API Documentation](https://clockify.me/developers-api#operation--v1-workspaces--workspaceId--projects-get--id)
 
 ```typescript
-const clockify = new Clockify(clockifyApiKey);
-const project = await clockify.workspace.withId(testWorkspaceId).projects.withId(testProjectId).get();
+const clockify = new Clockify("clockifyApiKey");
+const project = await clockify.workspace.withId("workspaceId").projects.withId("projectId").get();
 ```
 
 ### Add a new project to workspace
@@ -72,8 +178,8 @@ const project = await clockify.workspace.withId(testWorkspaceId).projects.withId
 [API Documentation](https://clockify.me/developers-api#operation--v1-workspaces--workspaceId--projects-post)
 
 ```typescript
-const clockify = new Clockify(clockifyApiKey);
-const project = await clockify.workspace.withId(testWorkspaceId).projects.post({ name });
+const clockify = new Clockify("clockifyApiKey");
+const project = await clockify.workspace.withId("workspaceId").projects.post({ name });
 ```
 
 ### Update project on workspace
@@ -81,8 +187,8 @@ const project = await clockify.workspace.withId(testWorkspaceId).projects.post({
 [API Documentation](https://clockify.me/developers-api#operation--v1-workspaces--workspaceId--projects-put)
 
 ```typescript
-const clockify = new Clockify(clockifyApiKey);
-const updatedProject = await clockify.workspace.withId(testWorkspaceId).projects.withId(testProjectId).put( project )
+const clockify = new Clockify("clockifyApiKey");
+const updatedProject = await clockify.workspace.withId("workspaceId").projects.withId("projectId").put( project )
 ```
 
 ### Update project estimate
@@ -90,8 +196,8 @@ const updatedProject = await clockify.workspace.withId(testWorkspaceId).projects
 [API Documentation](https://clockify.me/developers-api#operation--v1-workspaces--workspaceId--projects-patch-estimate)
 
 ```typescript
-const clockify = new Clockify(clockifyApiKey);
-const updatedProject = await clockify.workspace.withId(testWorkspaceId).projects.withId(testProjectId).estimate.patch( projectEstimate )
+const clockify = new Clockify("clockifyApiKey");
+const updatedProject = await clockify.workspace.withId("workspaceId").projects.withId("projectId").estimate.patch(projectEstimate)
 ```
 
 ### Update project memberships
@@ -99,8 +205,8 @@ const updatedProject = await clockify.workspace.withId(testWorkspaceId).projects
 [API Documentation](https://clockify.me/developers-api#operation--v1-workspaces--workspaceId--projects-patch)
 
 ```typescript
-const clockify = new Clockify(clockifyApiKey);
-const project = await clockify.workspace.withId(testWorkspaceId).projects.withId(testProjectId).memberships.patch(membership);
+const clockify = new Clockify("clockifyApiKey");
+const project = await clockify.workspace.withId("workspaceId").projects.withId("projectId").memberships.patch(membership);
 ```
 
 ### Update project template
@@ -108,8 +214,8 @@ const project = await clockify.workspace.withId(testWorkspaceId).projects.withId
 [API Documentation](https://clockify.me/developers-api#operation--v1-workspaces--workspaceId--projects-patch--template)
 
 ```typescript
-const clockify = new Clockify(clockifyApiKey);
-const projectNoTemplate = await clockify.workspace.withId(testWorkspaceId).projects.withId(testProjectId).template.patch({
+const clockify = new Clockify("clockifyApiKey");
+const projectNoTemplate = await clockify.workspace.withId("workspaceId").projects.withId("projectId").template.patch({
     isTemplate: false,
   });
 ```
@@ -119,8 +225,8 @@ const projectNoTemplate = await clockify.workspace.withId(testWorkspaceId).proje
 [API Documentation](https://clockify.me/developers-api#operation--v1-workspaces--workspaceId--projects--id--delete)
 
 ```typescript
-const clockify = new Clockify(clockifyApiKey);
-const deletedProject = await clockify.workspace.withId(testWorkspaceId).projects.withId(archivedProjectId).delete();
+const clockify = new Clockify("clockifyApiKey");
+const deletedProject = await clockify.workspace.withId("workspaceId").projects.withId("archivedProjectId").delete();
 ```
 
 ## Tag
@@ -130,8 +236,8 @@ const deletedProject = await clockify.workspace.withId(testWorkspaceId).projects
 [API Documentation](https://clockify.me/developers-api#operation--v1-workspaces--workspaceId--tags-get)
 
 ```typescript
-const clockify = new Clockify(clockifyApiKey);
-const tags = await clockify.workspace.withId(testWorkspaceId).tags.get();
+const clockify = new Clockify("clockifyApiKey");
+const tags = await clockify.workspace.withId("workspaceId").tags.get();
 ```
 
 ### Add a new tag to workspace
@@ -139,8 +245,8 @@ const tags = await clockify.workspace.withId(testWorkspaceId).tags.get();
 [API Documentation](https://clockify.me/developers-api#operation--v1-workspaces--workspaceId--tags-post)
 
 ```typescript
-const clockify = new Clockify(clockifyApiKey);
-const createdTag = await clockify.workspace.withId(testWorkspaceId).tags.post({ name });
+const clockify = new Clockify("clockifyApiKey");
+const createdTag = await clockify.workspace.withId("workspaceId").tags.post({ name });
 ```
 
 ### Update tag
@@ -148,8 +254,8 @@ const createdTag = await clockify.workspace.withId(testWorkspaceId).tags.post({ 
 [API Documentation](https://clockify.me/developers-api#operation--v1-workspaces--workspaceId--tags--tagId--put)
 
 ```typescript
-const clockify = new Clockify(clockifyApiKey);
-const updatedTag = await clockify.workspace.withId(testWorkspaceId).tags.withId(testTagId).put({ name });
+const clockify = new Clockify("clockifyApiKey");
+const updatedTag = await clockify.workspace.withId("workspaceId").tags.withId("tagId").put({ name });
 ```
 
 ### Delete tag
@@ -157,8 +263,8 @@ const updatedTag = await clockify.workspace.withId(testWorkspaceId).tags.withId(
 [API Documentation](https://clockify.me/developers-api#operation--v1-workspaces--workspaceId--tags--tagId--delete)
 
 ```typescript
-const clockify = new Clockify(clockifyApiKey);
-const deletedTag = await clockify.workspace.withId(testWorkspaceId).tags.withId(tagId).delete();
+const clockify = new Clockify("clockifyApiKey");
+const deletedTag = await clockify.workspace.withId("workspaceId").tags.withId("tagId").delete();
 ```
 
 ## Task
@@ -168,8 +274,8 @@ const deletedTag = await clockify.workspace.withId(testWorkspaceId).tags.withId(
 [API Documentation](https://clockify.me/developers-api#operation--v1-workspaces--workspaceId--projects--projectId--tasks-get)
 
 ```typescript
-const clockify = new Clockify(clockifyApiKey);
-const tasks = await clockify.workspace.withId(testWorkspaceId).projects.withId(testProjectId).tasks.get();
+const clockify = new Clockify("clockifyApiKey");
+const tasks = await clockify.workspace.withId("workspaceId").projects.withId("projectId").tasks.get();
 ```
 
 ### Find task on project by ID
@@ -177,8 +283,8 @@ const tasks = await clockify.workspace.withId(testWorkspaceId).projects.withId(t
 [API Documentation](https://clockify.me/developers-api#operation--v1-workspaces--workspaceId--projects--projectId--tasks-get--id)
 
 ```typescript
-const clockify = new Clockify(clockifyApiKey);
-const task = await clockify.workspace.withId(testWorkspaceId).projects.withId(testProjectId).tasks.withId(testTaskId).get();
+const clockify = new Clockify("clockifyApiKey");
+const task = await clockify.workspace.withId("workspaceId").projects.withId("projectId").tasks.withId("taskId").get();
 ```
 
 ### Add a new task on project
@@ -186,8 +292,8 @@ const task = await clockify.workspace.withId(testWorkspaceId).projects.withId(te
 [API Documentation](https://clockify.me/developers-api#operation--v1-workspaces--workspaceId--projects--projectId--tasks-post)
 
 ```typescript
-const clockify = new Clockify(clockifyApiKey);
-const createdTask = await clockify.workspace.withId(testWorkspaceId).projects.withId(testProjectId).tasks.post(task);
+const clockify = new Clockify("clockifyApiKey");
+const createdTask = await clockify.workspace.withId("workspaceId").projects.withId("projectId").tasks.post(task);
 ```
 
 ### Update task on project
@@ -195,8 +301,8 @@ const createdTask = await clockify.workspace.withId(testWorkspaceId).projects.wi
 [API Documentation](https://clockify.me/developers-api#operation--v1-workspaces--workspaceId--projects--projectId--tasks-put)
 
 ```typescript
-const clockify = new Clockify(clockifyApiKey);
-const updatedTask = await clockify.workspace.withId(testWorkspaceId).projects.withId(testProjectId).tasks.withId(testTaskId).put(task);
+const clockify = new Clockify("clockifyApiKey");
+const updatedTask = await clockify.workspace.withId("workspaceId").projects.withId("projectId").tasks.withId("taskId").put(task);
 ```
 
 ### Delete task from project
@@ -204,8 +310,8 @@ const updatedTask = await clockify.workspace.withId(testWorkspaceId).projects.wi
 [API Documentation](https://clockify.me/developers-api#operation--v1-workspaces--workspaceId--projects--projectId--tasks-delete)
 
 ```typescript
-const clockify = new Clockify(clockifyApiKey);
-const deletedTask = await clockify.workspace.withId(testWorkspaceId).projects.withId(testProjectId).tasks.withId(taskId).delete();
+const clockify = new Clockify("clockifyApiKey");
+const deletedTask = await clockify.workspace.withId("workspaceId").projects.withId("projectId").tasks.withId("taskId").delete();
 ```
 
 ## Time Entry
@@ -215,8 +321,8 @@ const deletedTask = await clockify.workspace.withId(testWorkspaceId).projects.wi
 [API Documentation](https://clockify.me/developers-api#operation--v1-workspaces--workspaceId--user--userId--time-entries-get)
 
 ```typescript
-const clockify = new Clockify(clockifyApiKey);
-const timeEntries = await clockify.workspace.withId(testWorkspaceId).users.withId(testUserId).timeEntries.get();
+const clockify = new Clockify("clockifyApiKey");
+const timeEntries = await clockify.workspace.withId("workspaceId").users.withId("userId").timeEntries.get();
 ```
 
 ### Get a specific time entry on workspace
@@ -224,8 +330,8 @@ const timeEntries = await clockify.workspace.withId(testWorkspaceId).users.withI
 [API Documentation](https://clockify.me/developers-api#operation--v1-workspaces--workspaceId--time-entries--id--get)
 
 ```typescript
-const clockify = new Clockify(clockifyApiKey);
-const timeEntry = await clockify.workspace.withId(testWorkspaceId).timeEntries.withId(testTimeEntryId).get();
+const clockify = new Clockify("clockifyApiKey");
+const timeEntry = await clockify.workspace.withId("workspaceId").timeEntries.withId("timeEntryId").get();
 ```
 
 ### Add a new time entry to workspace
@@ -233,8 +339,8 @@ const timeEntry = await clockify.workspace.withId(testWorkspaceId).timeEntries.w
 [API Documentation](https://clockify.me/developers-api#operation--v1-workspaces--workspaceId--time-entries-post)
 
 ```typescript
-const clockify = new Clockify(clockifyApiKey);
-const createdTimeEntry = await clockify.workspace.withId(testWorkspaceId).timeEntries.post(timeEntry);
+const clockify = new Clockify("clockifyApiKey");
+const createdTimeEntry = await clockify.workspace.withId("workspaceId").timeEntries.post(timeEntry);
 ```
 
 ### Add a new time entry for another user on workspace
@@ -242,8 +348,8 @@ const createdTimeEntry = await clockify.workspace.withId(testWorkspaceId).timeEn
 [API Documentation](https://clockify.me/developers-api#operation--v1-workspaces--workspaceId--user--userId--time-entries-post)
 
 ```typescript
-const clockify = new Clockify(clockifyApiKey);
-const createdTimeEntry = await clockify.workspace.withId(testWorkspaceId).users.withId(testUserId).timeEntries.post(timeEntry);
+const clockify = new Clockify("clockifyApiKey");
+const createdTimeEntry = await clockify.workspace.withId("workspaceId").users.withId("userId").timeEntries.post(timeEntry);
 ```
 
 ### Stop currently running timer on workspace
@@ -251,8 +357,8 @@ const createdTimeEntry = await clockify.workspace.withId(testWorkspaceId).users.
 [API Documentation](https://clockify.me/developers-api#operation--v1-workspaces--workspaceId--user--userId--time-entries-patch)
 
 ```typescript
-const clockify = new Clockify(clockifyApiKey);
-const updatedTimeEntry = await clockify.workspace.withId(testWorkspaceId).users.withId(testUserId).timeEntries.patch({ end: new Date() });
+const clockify = new Clockify("clockifyApiKey");
+const updatedTimeEntry = await clockify.workspace.withId("workspaceId").users.withId("userId").timeEntries.patch({ end: new Date() });
 ```
 
 ### Update time entry on workspace
@@ -260,8 +366,8 @@ const updatedTimeEntry = await clockify.workspace.withId(testWorkspaceId).users.
 [API Documentation](https://clockify.me/developers-api#operation--v1-workspaces--workspaceId--time-entries--id--put)
 
 ```typescript
-const clockify = new Clockify(clockifyApiKey);
-const updatedTimeEntry = await clockify.workspace.withId(testWorkspaceId).timeEntries.withId(testTimeEntryId).put(updatedTimeEntry);
+const clockify = new Clockify("clockifyApiKey");
+const updatedTimeEntry = await clockify.workspace.withId("workspaceId").timeEntries.withId("timeEntryId").put(updatedTimeEntry);
 ```
 
 ### Mark time entries as invoiced
@@ -269,8 +375,8 @@ const updatedTimeEntry = await clockify.workspace.withId(testWorkspaceId).timeEn
 [API Documentation](https://clockify.me/developers-api#operation--v1-workspaces--workspaceId--time-entries--id--patch--invoiced)
 
 ```typescript
-const clockify = new Clockify(clockifyApiKey);
-const updatedTimeEntry = await clockify.workspace.withId(testWorkspaceId).timeEntries.invoiced.patch(invoiced);
+const clockify = new Clockify("clockifyApiKey");
+const updatedTimeEntry = await clockify.workspace.withId("workspaceId").timeEntries.invoiced.patch(invoiced);
 ```
 
 ### Delete time entry from workspace
@@ -278,8 +384,8 @@ const updatedTimeEntry = await clockify.workspace.withId(testWorkspaceId).timeEn
 [API Documentation](https://clockify.me/developers-api#operation--v1-workspaces--workspaceId--time-entries--id--delete)
 
 ```typescript
-const clockify = new Clockify(clockifyApiKey);
-await clockify.workspace.withId(testWorkspaceId).timeEntries.withId(testTimeEntryId).delete();
+const clockify = new Clockify("clockifyApiKey");
+await clockify.workspace.withId("workspaceId").timeEntries.withId("timeEntryId").delete();
 ```
 
 ## User
@@ -289,7 +395,7 @@ await clockify.workspace.withId(testWorkspaceId).timeEntries.withId(testTimeEntr
 [API Documentation](https://clockify.me/developers-api#operation--v1-user-get)
 
 ```typescript
-const clockify = new Clockify(clockifyApiKey);
+const clockify = new Clockify("clockifyApiKey");
 const user = await clockify.user.get();
 ```
 
@@ -298,8 +404,8 @@ const user = await clockify.user.get();
 [API Documentation](https://clockify.me/developers-api#operation--v1-workspace--workspaceId--users-get)
 
 ```typescript
-const clockify = new Clockify(clockifyApiKey);
-const members = await clockify.workspace.withId(testWorkspaceId).users.get();
+const clockify = new Clockify("clockifyApiKey");
+const members = await clockify.workspace.withId("workspaceId").users.get();
 ```
 
 ### Add user to workspace
@@ -307,8 +413,8 @@ const members = await clockify.workspace.withId(testWorkspaceId).users.get();
 [API Documentation](https://clockify.me/developers-api#operation--v1-workspaces--workspaceId--users-post)
 
 ```typescript
-const clockify = new Clockify(clockifyApiKey);
-const member = await clockify.workspace.withId(testWorkspaceId).users.post({
+const clockify = new Clockify("clockifyApiKey");
+const member = await clockify.workspace.withId("workspaceId").users.post({
     email: "test@example.com"
 })
 ```
@@ -318,8 +424,8 @@ const member = await clockify.workspace.withId(testWorkspaceId).users.post({
 [API Documentation](https://clockify.me/developers-api#operation--v1-workspaces--workspaceId--users--userId--put)
 
 ```typescript
-const clockify = new Clockify(clockifyApiKey);
-const inactiveUser = await clockify.workspace.withId(testWorkspaceId).users.withId(testUserId).put({
+const clockify = new Clockify("clockifyApiKey");
+const inactiveUser = await clockify.workspace.withId("workspaceId").users.withId("userId").put({
     membershipStatus: UserStatusEnum.inactive,
 })
 ```
@@ -329,8 +435,8 @@ const inactiveUser = await clockify.workspace.withId(testWorkspaceId).users.with
 [API Documentation](https://clockify.me/developers-api#operation--v1-workspaces--workspaceId--users--userId--delete)
 
 ```typescript
-const clockify = new Clockify(clockifyApiKey);
-const removedUser = await clockify.workspace.withId(testWorkspaceId).users.withId(testUserId).delete();
+const clockify = new Clockify("clockifyApiKey");
+const removedUser = await clockify.workspace.withId("workspaceId").users.withId("userId").delete();
 ```
 
 ## Workspace
@@ -340,9 +446,76 @@ const removedUser = await clockify.workspace.withId(testWorkspaceId).users.withI
 [API Documentation](https://clockify.me/developers-api#operation--v1-workspaces-get)
 
 ```typescript
-const clockify = new Clockify(clockifyApiKey);
+const clockify = new Clockify("clockifyApiKey");
 const workspaces = await clockify.workspace.get();
 ```
+
+
+## Query, Types and Enums
+
+Here you find an exhaustive list of all Types, Queries and Enums you can import form "clockify-ts".
+
+### Available Types
+- ClientType
+- CustomFieldType
+- EntityType
+- EstimateType
+- MembershipType
+- MemberType
+- NewClientType
+- NewProjectType
+- NewTaskType
+- NewTimeEntryType
+- NewUserType
+- ProjectType
+- RoleType
+- TagType
+- TaskType
+- TimeEntryType
+- UpdateClientType
+- UpdateProjectType
+- UserGroupType
+- UserType
+- WorkspaceType
+
+### Available Queries
+- ClientsQuery
+- CustomFieldsQuery
+- ProjectsQuery
+- Query
+- TagsQuery
+- TasksQuery
+- TimeEntriesQuery
+- TimeEntryQuery
+- UpdateClientQuery
+- UpdateProjectQuery
+- UserGroupQuery
+- UsersQuery
+
+### Available Enums
+
+#### Type Enums
+- CustomFieldTypeEnum,
+- CustomFieldStatusEnum,
+- CustomFieldProjectDefaultValuesStatusEnum,
+- TimeEstimateTypeEnum,
+- BudgetEstimateTypeEnum,
+- TimeEstimateResetOptionEnum,
+- BudgetEstimateResetOptionEnum,
+- MembershipStatusEnum,
+- MembershipTypeEnum,
+- TaskStatusEnum,
+- RoleEnum,
+
+
+#### Query Enums
+- CustomFieldQueryStatusEnum,
+- QuerySortOrderEnum,
+- ProjectsQueryClientStatusEnum,
+- ProjectsQueryUserStatusEnum,
+- UpdateProjectQueryEstimateTypeEnum,
+- UserQueryMembershipsEnum,
+- UserQueryStatusEnum,
 
 ## Credits
 

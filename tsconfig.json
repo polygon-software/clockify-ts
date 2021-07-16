@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
+    "declaration": true,
     "noImplicitAny": true,
     "removeComments": true,
     "preserveConstEnums": true,
@@ -12,4 +13,10 @@
     "outDir": "dist/",
     "allowSyntheticDefaultImports": true
   },
+  "exclude": [
+    "src/**/*.test.ts",
+  ],
+  "include": [
+    "src"
+  ]
 }

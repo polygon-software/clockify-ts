@@ -1,5 +1,6 @@
-import ClockifyAPI, {IGettable, IPostable, Query} from "../../../../Api";
+import ClockifyAPI, {IGettable, IPostable} from "../../../../Api";
 import UserGroup from "./UserGroup";
+import UserGroupQuery from "../../../../Queries/UserGroupQuery";
 import type { UserGroupType } from "../../../../Types/UserGroupType";
 
 
@@ -34,13 +35,4 @@ export default class UserGroups extends ClockifyAPI implements IGettable<UserGro
     return this.axiosPost<UserGroupType>(data);
   }
 
-}
-
-interface UserGroupQuery extends Query {
-  page: number,
-  "page-size": number,
-  projectId: string,
-  name: string,
-  "sort-order": "ASCENDING" | "DESCENDING",
-  "sort-column": "NAME"
 }
