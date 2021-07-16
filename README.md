@@ -1,4 +1,4 @@
-# Clockify-ts - Typescript Wrapper for Clockify API
+# Clockify-ts - Typescript/JavaScript Wrapper for Clockify API
 
 <p align="center">
   <img width="300" height="200" src="https://clockify.me//assets/images/clockify-logo.svg">
@@ -17,7 +17,7 @@
 Clockify-ts is an unofficial wrapper for the clockify API written in TypeScript.
 By using Clockify's REST-based API, you can push and pull data to and from Clockify, and integrate it with other systems.
 
-You can install this package using [NPM]()!
+You can install this package using [NPM](https://www.npmjs.com/package/clockify-ts)!
 
 ```
 $ npm install clockify-ts
