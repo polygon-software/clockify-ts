@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "commonjs",
     "declaration": true,
     "noImplicitAny": true,
     "removeComments": true,
@@ -10,8 +9,10 @@
     "allowJs": false,
     "alwaysStrict": true,
     "strict": true,
-    "outDir": "dist/",
-    "allowSyntheticDefaultImports": true
+    "outDir": "dist/esm",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true
   },
   "exclude": [
     "src/**/*.test.ts",

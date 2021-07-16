@@ -26,9 +26,10 @@ $ npm install clockify-ts
 And import the package using require/import syntax:
 
 ```typescript
-const Clockify = require("clockify-ts");
-// Alternatively
 import Clockify from "clockify-ts";
+
+// Alternatively
+const Clockify = require("clockify-ts").default;
 ```
 
 ### Authentication
