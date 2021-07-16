@@ -23,7 +23,7 @@ You can install this package using [NPM]()!
 $ npm install clockify-ts
 ```
 
-And import the package using require/import syntax:
+And import the package using require/import syntax.
 
 ```typescript
 import Clockify from "clockify-ts";
@@ -31,6 +31,10 @@ import Clockify from "clockify-ts";
 // Alternatively
 const Clockify = require("clockify-ts").default;
 ```
+
+**Note:** To use the "import"-syntax, you must use a bundler like [Webpack](https://webpack.js.org/), 
+[Parel](https://parceljs.org/) or [Vite](https://vitejs.dev/) that can handle ECMAScript modules (ESM).
+
 
 ### Authentication
 

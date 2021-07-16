@@ -46,7 +46,7 @@ jobs:
         with:
           commit_message: New Build for production environmet
           commit_options: '--no-verify --signoff'
-          file_pattern: .
+          file_pattern: "*"
           commit_user_name: Bot (Autocommit Actions)
           commit_user_email: actions@github.com
           commit_author: Github Action <actions@github.com>
