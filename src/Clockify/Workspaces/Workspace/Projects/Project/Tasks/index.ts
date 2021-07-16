@@ -1,14 +1,8 @@
-import ClockifyAPI, {IGettable, IPostable, Query} from "../../../../../../Api";
+import ClockifyAPI, { IGettable, IPostable } from "../../../../../../Api";
 import Task from "./Task";
+import TasksQuery from "../../../../../../Queries/TasksQuery";
 import type { TaskType } from "../../../../../../Types/TaskType";
 import type { NewTaskType } from "../../../../../../Types/NewTaskType";
-
-interface TaskQuery extends Query {
-  "is-active"?: boolean,
-  "name"?: string,
-  page?: number,
-  "page-size"?: number,
-}
 
 export default class Tasks extends ClockifyAPI implements IGettable<TaskType[]>, IPostable<TaskType> {
 
@@ -32,7 +26,7 @@ export default class Tasks extends ClockifyAPI implements IGettable<TaskType[]>,
   /**
    * Find tasks on project
    */
-  get(query: TaskQuery = {}): Promise<TaskType[]> {
+  get(query: TasksQuery = {}): Promise<TaskType[]> {
     return this.axiosGet(query);
   }
 

@@ -1,13 +1,7 @@
-import ClockifyAPI, {IGettable, IPostable, Query} from "../../../../Api";
+import ClockifyAPI, {IGettable, IPostable} from "../../../../Api";
 import type { TagType } from "../../../../Types/TagType";
 import Tag from "./Tag";
-
-interface TagsQuery extends Query {
-  name?: string,
-  archived?: boolean,
-  page?: number,
-  "page-size"?: number,
-}
+import TagsQuery from "../../../../Queries/TagsQuery";
 
 export default class Tags extends ClockifyAPI implements IGettable<TagType[]>, IPostable<TagType> {
   workspaceId: string;

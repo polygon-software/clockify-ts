@@ -1,4 +1,5 @@
-import ClockifyAPI, {IDeletable, IPuttable, Query} from "../../../../../Api";
+import ClockifyAPI, {IDeletable, IPuttable} from "../../../../../Api";
+import UpdateClientQuery from "../../../../../Queries/UpdateClientQuery";
 import type { UpdateClientType } from "../../../../../Types/UpdateClientType";
 import type { ClientType } from "../../../../../Types/ClientType";
 
@@ -31,8 +32,4 @@ export default class Client extends ClockifyAPI implements IPuttable<ClientType>
     return this.axiosDelete<ClientType>({});
   }
 
-}
-
-interface UpdateClientQuery extends Query {
-  "archive-projects"?: boolean,
 }

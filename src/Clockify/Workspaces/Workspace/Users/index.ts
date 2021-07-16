@@ -1,21 +1,9 @@
-import ClockifyAPI, { IGettable, IPostable, Query } from "../../../../Api";
+import ClockifyAPI, { IGettable, IPostable } from "../../../../Api";
 import User from "./User";
+import UsersQuery from "../../../../Queries/UsersQuery";
 import {NewUserType} from "../../../../Types/NewUserType";
 import type { MemberType } from "../../../../Types/MemberType";
 import type { UserType } from "../../../../Types/UserType";
-
-interface UserQuery extends Query {
-  "page"?: number,
-  "page-size"?: number,
-  "memberships"?: "WORKSPACE" | "PROJECT" | "USERGROUP" | "ALL",
-  "email"?: string,
-  "projectId"?: string,
-  "name"?: string,
-  "status"?: "PENDING" | "ACTIVE" | "DECLINED" | "INACTIVE",
-  "sort-column"?: "EMAIL" | "NAME" | "HOURLYRATE",
-  "sort-order"?: "ASCENDING" | "DESCENDING",
-  "includeRoles"?: boolean,
-}
 
 export default class Users extends ClockifyAPI implements IGettable<MemberType[]>, IPostable<UserType> {
 
@@ -37,7 +25,7 @@ export default class Users extends ClockifyAPI implements IGettable<MemberType[]
   /**
    * Find all users on workspace
    */
-  get(query: UserQuery): Promise<MemberType[]> {
+  get(query: UsersQuery): Promise<MemberType[]> {
     return this.axiosGet<MemberType[]>(query);
   }
 

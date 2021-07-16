@@ -1,15 +1,12 @@
 import { stringify } from "qs";
 import axios, { AxiosInstance } from "axios";
 import ClockifyError from "../ClockifyError";
+import {Query} from "../Queries/Query";
 
 const paramsSerializer = (params: unknown) => stringify(params, {
   arrayFormat: "repeat",
   serializeDate: (d: Date) => d.toISOString(),
 });
-
-export interface Query {
-  [name: string]: string | number | Date | boolean | Array<string> | Array<number> | null | undefined,
-}
 
 export interface IGettable<T> {
   get(query: Query): Promise<T>;

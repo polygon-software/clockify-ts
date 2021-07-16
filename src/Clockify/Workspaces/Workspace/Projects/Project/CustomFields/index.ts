@@ -1,6 +1,7 @@
-import ClockifyAPI, {IGettable, Query} from "../../../../../../Api";
+import ClockifyAPI, {IGettable} from "../../../../../../Api";
 import type { CustomFieldType } from "../../../../../../Types/CustomFieldType";
 import CustomField from "./CustomField";
+import CustomFieldsQuery from "../../../../../../Queries/CustomFieldsQuery";
 
 export default class CustomFields extends ClockifyAPI implements IGettable<CustomFieldType[]> {
 
@@ -29,7 +30,3 @@ export default class CustomFields extends ClockifyAPI implements IGettable<Custo
   }
 }
 
-interface CustomFieldsQuery extends Query {
-  name: string,
-  status: "INACTIVE" | "VISIBLE" | "INVISIBLE",
-}
