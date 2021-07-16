@@ -108,7 +108,7 @@ test("Stop currently running timer on workspace", async () => {
   const updatedTimeEntry = await clockify.workspace.withId(testWorkspaceId).users.withId(testUserId).timeEntries.patch({ end: new Date() });
 
   // Expect timer to have run for 2 seconds
-  expect(updatedTimeEntry.timeInterval.duration).toBe("PT2S");
+  expect(["PT2S", "PT1S", "PT3S"]).toContain(updatedTimeEntry.timeInterval.duration);
 
   // Delete time entry
   await clockify.workspace.withId(testWorkspaceId).timeEntries.withId(updatedTimeEntry.id).delete();
