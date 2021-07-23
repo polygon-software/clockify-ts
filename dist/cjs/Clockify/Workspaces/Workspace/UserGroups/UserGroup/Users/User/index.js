@@ -18,7 +18,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var Api_1 = __importDefault(require("../../../../../../../Api"));
+var ClockifyApi_1 = __importDefault(require("../../../../../../../Api/ClockifyApi"));
 var User = (function (_super) {
     __extends(User, _super);
     function User(apiKey, workspaceId, userGroupId, userId) {
@@ -35,6 +35,6 @@ var User = (function (_super) {
         return this.axiosDelete({});
     };
     return User;
-}(Api_1.default));
+}(ClockifyApi_1.default));
 exports.default = User;
 //# sourceMappingURL=index.js.map

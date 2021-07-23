@@ -1,4 +1,4 @@
-import ClockifyAPI, { IGettable } from "../../../../../../Api";
+import ClockifyAPI, { IGettable } from "../../../../../../Api/ClockifyApi";
 import type { CustomFieldType } from "../../../../../../Types/CustomFieldType";
 import CustomField from "./CustomField";
 import CustomFieldsQuery from "../../../../../../Queries/CustomFieldsQuery";

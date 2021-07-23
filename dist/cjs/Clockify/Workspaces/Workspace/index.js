@@ -18,7 +18,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var Api_1 = __importDefault(require("../../../Api"));
+var ClockifyApi_1 = __importDefault(require("../../../Api/ClockifyApi"));
 var Users_1 = __importDefault(require("./Users"));
 var Clients_1 = __importDefault(require("./Clients"));
 var Projects_1 = __importDefault(require("./Projects"));
@@ -26,6 +26,7 @@ var Tags_1 = __importDefault(require("./Tags"));
 var CustomFields_1 = __importDefault(require("./CustomFields"));
 var TimeEntries_1 = __importDefault(require("./TimeEntries"));
 var UserGroups_1 = __importDefault(require("./UserGroups"));
+var Reports_1 = __importDefault(require("./Reports"));
 var Workspace = (function (_super) {
     __extends(Workspace, _super);
     function Workspace(apiKey, workspaceId) {
@@ -85,7 +86,14 @@ var Workspace = (function (_super) {
         enumerable: false,
         configurable: true
     });
+    Object.defineProperty(Workspace.prototype, "reports", {
+        get: function () {
+            return new Reports_1.default(this._apiKey, this.workspaceId);
+        },
+        enumerable: false,
+        configurable: true
+    });
     return Workspace;
-}(Api_1.default));
+}(ClockifyApi_1.default));
 exports.default = Workspace;
 //# sourceMappingURL=index.js.map

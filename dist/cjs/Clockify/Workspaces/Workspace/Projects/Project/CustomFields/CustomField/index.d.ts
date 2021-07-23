@@ -1,4 +1,4 @@
-import ClockifyAPI, { IDeletable, IPatchable } from "../../../../../../../Api";
+import ClockifyAPI, { IDeletable, IPatchable } from "../../../../../../../Api/ClockifyApi";
 import type { CustomFieldType } from "../../../../../../../Types/CustomFieldType";
 export default class CustomField extends ClockifyAPI implements IPatchable<CustomFieldType>, IDeletable<CustomFieldType> {
     workspaceId: string;

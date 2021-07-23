@@ -18,7 +18,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var Api_1 = __importDefault(require("../../../../../Api"));
+var ClockifyApi_1 = __importDefault(require("../../../../../Api/ClockifyApi"));
 var TimeEntry = (function (_super) {
     __extends(TimeEntry, _super);
     function TimeEntry(apiKey, workspaceId, timeEntryId) {
@@ -41,6 +41,6 @@ var TimeEntry = (function (_super) {
         return this.axiosDelete({});
     };
     return TimeEntry;
-}(Api_1.default));
+}(ClockifyApi_1.default));
 exports.default = TimeEntry;
 //# sourceMappingURL=index.js.map

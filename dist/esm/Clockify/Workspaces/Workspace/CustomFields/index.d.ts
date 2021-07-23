@@ -1,4 +1,4 @@
-import ClockifyAPI, { IGettable } from "../../../../Api";
+import ClockifyAPI, { IGettable } from "../../../../Api/ClockifyApi";
 import CustomFieldsQuery from "../../../../Queries/CustomFieldsQuery";
 import type { CustomFieldType } from "../../../../Types/CustomFieldType";
 export default class CustomFields extends ClockifyAPI implements IGettable<CustomFieldType[]> {

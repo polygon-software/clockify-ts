@@ -1,4 +1,4 @@
-import ClockifyAPI, { IGettable, IPostable } from "../../../../../../Api";
+import ClockifyAPI, { IGettable, IPostable } from "../../../../../../Api/ClockifyApi";
 import Task from "./Task";
 import TasksQuery from "../../../../../../Queries/TasksQuery";
 import type { TaskType } from "../../../../../../Types/TaskType";

@@ -18,7 +18,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var Api_1 = __importDefault(require("../../../../../../Api"));
+var ClockifyApi_1 = __importDefault(require("../../../../../../Api/ClockifyApi"));
 var Estimate = (function (_super) {
     __extends(Estimate, _super);
     function Estimate(apiKey, workspaceId, projectId) {
@@ -34,6 +34,6 @@ var Estimate = (function (_super) {
         return this.axiosPatch(data, {});
     };
     return Estimate;
-}(Api_1.default));
+}(ClockifyApi_1.default));
 exports.default = Estimate;
 //# sourceMappingURL=index.js.map

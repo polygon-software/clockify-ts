@@ -1,4 +1,4 @@
-import ClockifyAPI, { IPostable } from "../../../../Api";
+import ClockifyAPI, { IPostable } from "../../../../Api/ClockifyApi";
 import TimeEntry from "./TimeEntry";
 import type { NewTimeEntryType } from "../../../../Types/NewTimeEntryType";
 import type { TimeEntryType } from "../../../../Types/TimeEntryType";

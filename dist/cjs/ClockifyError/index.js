@@ -19,14 +19,16 @@ var http_status_codes_1 = require("http-status-codes");
 var ClockifyError = (function (_super) {
     __extends(ClockifyError, _super);
     function ClockifyError(error) {
+        var _a;
         var _this = this;
-        var message = "";
+        var message;
+        var requestMethod = (_a = error.config.method) === null || _a === void 0 ? void 0 : _a.toUpperCase();
         if (error.response) {
             var statusCode = error.response.status;
-            message = "Response Error[" + statusCode + "]: " + http_status_codes_1.getReasonPhrase(statusCode) + ". Message: " + error.response.data.message + ". Resource: " + error.response.data.path;
+            message = "Response Error[" + requestMethod + ":" + statusCode + "]: " + http_status_codes_1.getReasonPhrase(statusCode) + ". Message: " + error.response.data.message + ". Resource: " + error.response.data.path;
         }
         else if (error.request) {
-            message = "Response Error: " + JSON.stringify(error.request);
+            message = "Response Error[" + requestMethod + "]: " + JSON.stringify(error.request);
         }
         else {
             message = "Error: " + error.message;

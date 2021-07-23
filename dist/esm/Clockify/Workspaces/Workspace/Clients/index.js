@@ -13,7 +13,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-import ClockifyAPI from "../../../../Api";
+import ClockifyAPI from "../../../../Api/ClockifyApi";
 import Client from "./Client";
 var Clients = (function (_super) {
     __extends(Clients, _super);

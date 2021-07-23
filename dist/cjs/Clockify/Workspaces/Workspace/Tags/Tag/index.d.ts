@@ -1,4 +1,4 @@
-import ClockifyAPI, { IDeletable, IPuttable } from "../../../../../Api";
+import ClockifyAPI, { IDeletable, IPuttable } from "../../../../../Api/ClockifyApi";
 import type { TagType } from "../../../../../Types/TagType";
 export default class Tag extends ClockifyAPI implements IPuttable<TagType>, IDeletable<TagType> {
     workspaceId: string;

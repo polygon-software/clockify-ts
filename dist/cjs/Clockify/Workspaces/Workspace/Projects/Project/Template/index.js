@@ -18,7 +18,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var Api_1 = __importDefault(require("../../../../../../Api"));
+var ClockifyApi_1 = __importDefault(require("../../../../../../Api/ClockifyApi"));
 var Template = (function (_super) {
     __extends(Template, _super);
     function Template(apiKey, workspaceId, projectId) {
@@ -34,6 +34,6 @@ var Template = (function (_super) {
         return this.axiosPatch(data, {});
     };
     return Template;
-}(Api_1.default));
+}(ClockifyApi_1.default));
 exports.default = Template;
 //# sourceMappingURL=index.js.map

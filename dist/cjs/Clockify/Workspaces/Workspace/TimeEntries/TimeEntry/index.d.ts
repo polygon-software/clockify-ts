@@ -1,4 +1,4 @@
-import ClockifyAPI, { IDeletable, IGettable, IPuttable } from "../../../../../Api";
+import ClockifyAPI, { IDeletable, IGettable, IPuttable } from "../../../../../Api/ClockifyApi";
 import type { TimeEntryType } from "../../../../../Types/TimeEntryType";
 import type { NewTimeEntryType } from "../../../../../Types/NewTimeEntryType";
 import TimeEntryQuery from "../../../../../Queries/TimeEntryQuery";

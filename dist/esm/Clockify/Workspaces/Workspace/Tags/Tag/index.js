@@ -13,7 +13,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-import ClockifyAPI from "../../../../../Api";
+import ClockifyAPI from "../../../../../Api/ClockifyApi";
 var Tag = (function (_super) {
     __extends(Tag, _super);
     function Tag(apiKey, workspaceId, tagId) {

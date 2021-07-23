@@ -1,4 +1,4 @@
-import ClockifyAPI, { IDeletable } from "../../../../../../../Api";
+import ClockifyAPI, { IDeletable } from "../../../../../../../Api/ClockifyApi";
 import type { UserGroupType } from "../../../../../../../Types/UserGroupType";
 export default class User extends ClockifyAPI implements IDeletable<UserGroupType> {
     workspaceId: string;

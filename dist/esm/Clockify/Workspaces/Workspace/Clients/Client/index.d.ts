@@ -1,4 +1,4 @@
-import ClockifyAPI, { IDeletable, IPuttable } from "../../../../../Api";
+import ClockifyAPI, { IDeletable, IPuttable } from "../../../../../Api/ClockifyApi";
 import UpdateClientQuery from "../../../../../Queries/UpdateClientQuery";
 import type { UpdateClientType } from "../../../../../Types/UpdateClientType";
 import type { ClientType } from "../../../../../Types/ClientType";

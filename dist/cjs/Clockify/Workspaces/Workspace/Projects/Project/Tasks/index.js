@@ -18,7 +18,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var Api_1 = __importDefault(require("../../../../../../Api"));
+var ClockifyApi_1 = __importDefault(require("../../../../../../Api/ClockifyApi"));
 var Task_1 = __importDefault(require("./Task"));
 var Tasks = (function (_super) {
     __extends(Tasks, _super);
@@ -42,6 +42,6 @@ var Tasks = (function (_super) {
         return this.axiosPost(data, {});
     };
     return Tasks;
-}(Api_1.default));
+}(ClockifyApi_1.default));
 exports.default = Tasks;
 //# sourceMappingURL=index.js.map

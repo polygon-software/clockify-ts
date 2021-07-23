@@ -1,4 +1,4 @@
-import ClockifyAPI, { IGettable, IPatchable, IPostable } from "../../../../../../Api";
+import ClockifyAPI, { IGettable, IPatchable, IPostable } from "../../../../../../Api/ClockifyApi";
 import TimeEntriesQuery from "../../../../../../Queries/TimeEntriesQuery";
 import type { TimeEntryType } from "../../../../../../Types/TimeEntryType";
 import type { NewTimeEntryType } from "../../../../../../Types/NewTimeEntryType";

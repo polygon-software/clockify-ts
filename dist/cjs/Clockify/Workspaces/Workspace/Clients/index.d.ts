@@ -1,4 +1,4 @@
-import ClockifyAPI, { IGettable, IPostable } from "../../../../Api";
+import ClockifyAPI, { IGettable, IPostable } from "../../../../Api/ClockifyApi";
 import Client from "./Client";
 import ClientsQuery from "../../../../Queries/ClientsQuery";
 import type { ClientType } from "../../../../Types/ClientType";

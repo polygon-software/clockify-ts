@@ -1,4 +1,4 @@
-import ClockifyAPI from "../Api";
+import ClockifyAPI from "../Api/ClockifyApi";
 import Users from "./Users";
 import Workspace from "./Workspaces";
 import Workspaces from "./Workspaces";

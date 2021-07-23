@@ -13,7 +13,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-import ClockifyAPI from "../../../Api";
+import ClockifyAPI from "../../../Api/ClockifyApi";
 import Users from "./Users";
 import Clients from "./Clients";
 import Projects from "./Projects";
@@ -21,6 +21,7 @@ import Tags from "./Tags";
 import CustomFields from "./CustomFields";
 import TimeEntries from "./TimeEntries";
 import UserGroups from "./UserGroups";
+import Reports from "./Reports";
 var Workspace = (function (_super) {
     __extends(Workspace, _super);
     function Workspace(apiKey, workspaceId) {
@@ -76,6 +77,13 @@ var Workspace = (function (_super) {
     Object.defineProperty(Workspace.prototype, "users", {
         get: function () {
             return new Users(this._apiKey, this.workspaceId);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Workspace.prototype, "reports", {
+        get: function () {
+            return new Reports(this._apiKey, this.workspaceId);
         },
         enumerable: false,
         configurable: true

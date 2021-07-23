@@ -1,4 +1,4 @@
-import ClockifyAPI, { IDeletable, IPuttable } from "../../../../../Api";
+import ClockifyAPI, { IDeletable, IPuttable } from "../../../../../Api/ClockifyApi";
 import TimeEntries from "./TimeEntries";
 import { UserType } from "../../../../../Types/UserType";
 export default class User extends ClockifyAPI implements IPuttable<UserType>, IDeletable<null> {
