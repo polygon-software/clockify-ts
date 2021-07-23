@@ -1,4 +1,4 @@
-import ClockifyAPI, {IDeletable, IGettable, IPuttable} from "../../../../../../../Api";
+import ClockifyAPI, {IDeletable, IGettable, IPuttable} from "../../../../../../../Api/ClockifyApi";
 import type { TaskType } from "../../../../../../../Types/TaskType";
 import type { NewTaskType } from "../../../../../../../Types/NewTaskType";
 

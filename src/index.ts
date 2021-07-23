@@ -20,6 +20,8 @@ import type { UpdateProjectType } from "./Types/UpdateProjectType";
 import type { UserGroupType } from "./Types/UserGroupType";
 import type { UserType } from "./Types/UserType";
 import type { WorkspaceType } from "./Types/WorkspaceType";
+import type { RequestDetailedReportType } from "./Types/RequestDetailedReportType";
+import type { RequestSummaryReportType } from "./Types/RequestSummaryReportType";
 
 import ClientsQuery from "./Queries/ClientsQuery";
 import CustomFieldsQuery from "./Queries/CustomFieldsQuery";
@@ -34,6 +36,39 @@ import UpdateProjectQuery from "./Queries/UpdateProjectQuery";
 import UserGroupQuery from "./Queries/UserGroupQuery";
 import UsersQuery from "./Queries/UsersQuery";
 
+import {
+  RequestDetailedReportGroupsEnum,
+  RequestDetailedReportTotalOptionEnum,
+  RequestDetailedReportSortOrderEnum,
+  RequestDetailedReportInvoicingStateEnum,
+  RequestDetailedReportApprovalStateEnum,
+  RequestDetailedReportSortColumnEnum,
+  RequestDetailedReportAmountShownEnum,
+  RequestDetailedReportExportTypeEnum,
+  RequestDetailedReportContainsFilterEnum,
+  RequestDetailedReportContainedInTimeEntryFilterEnum,
+  RequestDetailedReportProjectStatusFilterEnum,
+  RequestDetailedReportClientStatusFilterEnum,
+  RequestDetailedReportTagStatusFilterEnum,
+  RequestDetailedReportUserStatusFilterEnum,
+  RequestDetailedReportTaskStatusFilterEnum,
+} from "./Types/RequestDetailedReportType";
+import {
+  RequestSummaryReportGroupsEnum,
+  RequestSummaryReportSortOrderEnum,
+  RequestSummaryReportInvoicingStateEnum,
+  RequestSummaryReportApprovalStateEnum,
+  RequestSummaryReportSortColumnEnum,
+  RequestSummaryReportAmountShownEnum,
+  RequestSummaryReportExportTypeEnum,
+  RequestSummaryReportContainsFilterEnum,
+  RequestSummaryReportContainedInTimeEntryFilterEnum,
+  RequestSummaryReportProjectStatusFilterEnum,
+  RequestSummaryReportClientStatusFilterEnum,
+  RequestSummaryReportTagStatusFilterEnum,
+  RequestSummaryReportUserStatusFilterEnum,
+  RequestSummaryReportTaskStatusFilterEnum,
+} from "./Types/RequestSummaryReportType";
 import {
   CustomFieldTypeEnum,
   CustomFieldStatusEnum,
@@ -78,6 +113,8 @@ export {
   UserGroupType,
   UserType,
   WorkspaceType,
+  RequestDetailedReportType,
+  RequestSummaryReportType,
 
   ClientsQuery,
   CustomFieldsQuery,
@@ -92,6 +129,35 @@ export {
   UserGroupQuery,
   UsersQuery,
 
+  RequestDetailedReportGroupsEnum,
+  RequestDetailedReportTotalOptionEnum,
+  RequestDetailedReportSortOrderEnum,
+  RequestDetailedReportInvoicingStateEnum,
+  RequestDetailedReportApprovalStateEnum,
+  RequestDetailedReportSortColumnEnum,
+  RequestDetailedReportAmountShownEnum,
+  RequestDetailedReportExportTypeEnum,
+  RequestDetailedReportContainsFilterEnum,
+  RequestDetailedReportContainedInTimeEntryFilterEnum,
+  RequestDetailedReportProjectStatusFilterEnum,
+  RequestDetailedReportClientStatusFilterEnum,
+  RequestDetailedReportTagStatusFilterEnum,
+  RequestDetailedReportUserStatusFilterEnum,
+  RequestDetailedReportTaskStatusFilterEnum,
+  RequestSummaryReportGroupsEnum,
+  RequestSummaryReportSortOrderEnum,
+  RequestSummaryReportInvoicingStateEnum,
+  RequestSummaryReportApprovalStateEnum,
+  RequestSummaryReportSortColumnEnum,
+  RequestSummaryReportAmountShownEnum,
+  RequestSummaryReportExportTypeEnum,
+  RequestSummaryReportContainsFilterEnum,
+  RequestSummaryReportContainedInTimeEntryFilterEnum,
+  RequestSummaryReportProjectStatusFilterEnum,
+  RequestSummaryReportClientStatusFilterEnum,
+  RequestSummaryReportTagStatusFilterEnum,
+  RequestSummaryReportUserStatusFilterEnum,
+  RequestSummaryReportTaskStatusFilterEnum,
   CustomFieldTypeEnum,
   CustomFieldStatusEnum,
   CustomFieldProjectDefaultValuesStatusEnum,

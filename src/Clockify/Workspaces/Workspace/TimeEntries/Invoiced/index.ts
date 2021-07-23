@@ -1,4 +1,4 @@
-import ClockifyAPI, {IPatchable} from "../../../../../Api";
+import ClockifyAPI, {IPatchable} from "../../../../../Api/ClockifyApi";
 
 
 export default class Invoiced extends ClockifyAPI implements IPatchable<null> {

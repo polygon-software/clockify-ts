@@ -1,4 +1,4 @@
-import ClockifyAPI, {IGettable, IPostable} from "../../../../Api";
+import ClockifyAPI, {IGettable, IPostable} from "../../../../Api/ClockifyApi";
 import type { TagType } from "../../../../Types/TagType";
 import Tag from "./Tag";
 import TagsQuery from "../../../../Queries/TagsQuery";
