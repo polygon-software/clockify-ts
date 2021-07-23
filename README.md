@@ -1,7 +1,7 @@
 # Clockify-ts - Typescript/JavaScript Wrapper for Clockify API
 
-<p align="center">
-  <img width="300" height="200" src="https://clockify.me//assets/images/clockify-logo.svg">
+<p style="text-align: center">
+  <img width="300" height="200" src="https://clockify.me//assets/images/clockify-logo.svg" alt="clockify-logo">
 </p>
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=polygon-software_clockify.js&metric=alert_status)](https://sonarcloud.io/dashboard?id=polygon-software_clockify.js)
@@ -95,8 +95,10 @@ The following clockify API features are already well implemented and tested.
 
 #### Report Endpoints
 
-- Reports: :heavy_check_mark:
-- Shared Reports: :heavy_check_mark:
+- Detailed Reports: :heavy_check_mark:
+- Summary Reports: :heavy_check_mark:
+- Weekly Reports: :x:
+- Shared Reports: :x:
 
 # Examples / Documentation
 
@@ -455,6 +457,41 @@ const clockify = new Clockify("clockifyApiKey");
 const workspaces = await clockify.workspace.get();
 ```
 
+## Reports
+
+### Summary Report
+
+[API Documentation](https://clockify.me/developers-api#operation--v1-workspaces--workspaceId--reports-summary-post)
+
+```typescript
+import type { RequestSummaryReportType } from "clockify-ts";
+const clockify = new Clockify("clockifyApiKey");
+
+const summaryQuery: RequestSummaryReportType = {
+    dateRangeStart: new Date(1577836800000), // Jan. 2020
+    dateRangeEnd: new Date(1609459199000), // Jan. 2021
+    summaryFilter: {
+        groups: [RequestSummaryReportGroupsEnum.project],
+    }
+}
+const report = await clockify.workspaces.withId(testWorkspaceId).reports.summary.post(summaryQuery);
+```
+
+### Detailed Report
+
+[API Documentation](https://clockify.me/developers-api#operation--v1-workspaces--workspaceId--reports-detailed-post)
+
+```typescript
+import type { RequestDetailedReportType } from "clockify-ts";
+const clockify = new Clockify("clockifyApiKey");
+
+const detailedQuery: RequestDetailedReportType = {
+    dateRangeStart: new Date(1577836800000), // Jan. 2020
+    dateRangeEnd: new Date(1609459199000), // Jan. 2021
+    detailedFilter: {}
+}
+const report = await clockify.workspaces.withId(testWorkspaceId).reports.detailed.post(detailedQuery);
+```
 
 ## Query, Types and Enums
 
@@ -482,6 +519,8 @@ Here you find an exhaustive list of all Types, Queries and Enums you can import 
 - UserGroupType
 - UserType
 - WorkspaceType
+- RequestDetailedReportType
+- RequestSummaryReportType
 
 ### Available Queries
 - ClientsQuery
@@ -521,6 +560,37 @@ Here you find an exhaustive list of all Types, Queries and Enums you can import 
 - UpdateProjectQueryEstimateTypeEnum,
 - UserQueryMembershipsEnum,
 - UserQueryStatusEnum,
+
+#### Report Enums
+- RequestDetailedReportGroupsEnum
+- RequestDetailedReportTotalOptionEnum
+- RequestDetailedReportSortOrderEnum
+- RequestDetailedReportInvoicingStateEnum
+- RequestDetailedReportApprovalStateEnum
+- RequestDetailedReportSortColumnEnum
+- RequestDetailedReportAmountShownEnum
+- RequestDetailedReportExportTypeEnum
+- RequestDetailedReportContainsFilterEnum
+- RequestDetailedReportContainedInTimeEntryFilterEnum
+- RequestDetailedReportProjectStatusFilterEnum
+- RequestDetailedReportClientStatusFilterEnum
+- RequestDetailedReportTagStatusFilterEnum
+- RequestDetailedReportUserStatusFilterEnum
+- RequestDetailedReportTaskStatusFilterEnum
+- RequestSummaryReportGroupsEnum
+- RequestSummaryReportSortOrderEnum
+- RequestSummaryReportInvoicingStateEnum
+- RequestSummaryReportApprovalStateEnum
+- RequestSummaryReportSortColumnEnum
+- RequestSummaryReportAmountShownEnum
+- RequestSummaryReportExportTypeEnum
+- RequestSummaryReportContainsFilterEnum
+- RequestSummaryReportContainedInTimeEntryFilterEnum
+- RequestSummaryReportProjectStatusFilterEnum
+- RequestSummaryReportClientStatusFilterEnum
+- RequestSummaryReportTagStatusFilterEnum
+- RequestSummaryReportUserStatusFilterEnum
+- RequestSummaryReportTaskStatusFilterEnum
 
 ## Credits
 

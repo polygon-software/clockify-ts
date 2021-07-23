@@ -1,4 +1,4 @@
-import ClockifyAPI, { IGettable, IPostable } from "../../../../Api";
+import ClockifyAPI, { IGettable, IPostable } from "../../../../Api/ClockifyApi";
 import type { ProjectType } from "../../../../Types/ProjectType";
 import type { NewProjectType } from "../../../../Types/NewProjectType";
 import Project from "./Project";

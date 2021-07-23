@@ -1,7 +1,7 @@
 import { stringify } from "qs";
 import axios, { AxiosInstance } from "axios";
-import ClockifyError from "../ClockifyError";
-import {Query} from "../Queries/Query";
+import ClockifyError from "../../ClockifyError";
+import {Query} from "../../Queries/Query";
 
 const paramsSerializer = (params: unknown) => stringify(params, {
   arrayFormat: "repeat",

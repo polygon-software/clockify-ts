@@ -1,4 +1,4 @@
-import ClockifyAPI, {IDeletable, IPuttable} from "../../../../../Api";
+import ClockifyAPI, {IDeletable, IPuttable} from "../../../../../Api/ClockifyApi";
 import Users from "./Users";
 import type { UserGroupType } from "../../../../../Types/UserGroupType";
 

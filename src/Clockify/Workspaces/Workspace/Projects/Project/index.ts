@@ -1,4 +1,4 @@
-import ClockifyAPI, {IDeletable, IGettable, IPuttable} from "../../../../../Api";
+import ClockifyAPI, {IDeletable, IGettable, IPuttable} from "../../../../../Api/ClockifyApi";
 import type { ProjectType } from "../../../../../Types/ProjectType";
 import CustomFields from "./CustomFields";
 import Estimate from "./Estimate";

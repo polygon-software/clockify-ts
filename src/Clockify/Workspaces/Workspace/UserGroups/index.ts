@@ -1,4 +1,4 @@
-import ClockifyAPI, {IGettable, IPostable} from "../../../../Api";
+import ClockifyAPI, {IGettable, IPostable} from "../../../../Api/ClockifyApi";
 import UserGroup from "./UserGroup";
 import UserGroupQuery from "../../../../Queries/UserGroupQuery";
 import type { UserGroupType } from "../../../../Types/UserGroupType";

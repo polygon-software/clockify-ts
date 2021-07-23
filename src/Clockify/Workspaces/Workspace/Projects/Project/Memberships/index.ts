@@ -1,4 +1,4 @@
-import ClockifyAPI, {IPatchable} from "../../../../../../Api";
+import ClockifyAPI, {IPatchable} from "../../../../../../Api/ClockifyApi";
 import type { ProjectType } from "../../../../../../Types/ProjectType";
 import type { MembershipType } from "../../../../../../Types/MembershipType";
 

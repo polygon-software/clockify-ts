@@ -1,4 +1,4 @@
-import ClockifyAPI, {IPostable} from "../../../../../../Api";
+import ClockifyAPI, {IPostable} from "../../../../../../Api/ClockifyApi";
 import User from "./User";
 import type { UserGroupType } from "../../../../../../Types/UserGroupType";
 
