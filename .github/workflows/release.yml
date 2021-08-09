@@ -41,6 +41,9 @@ jobs:
       - name: Build application
         run: npm run build
 
+      - name: Stage new / changed files
+        run: git add .
+
       - name: Commit build files
         uses: polygon-software/action-commit@master
         with:
