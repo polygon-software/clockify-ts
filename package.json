@@ -1,6 +1,6 @@
 {
   "name": "clockify-ts",
-  "version": "1.2107.12",
+  "version": "1.2108.13",
   "description": "Clockify API wrapper in Typescript",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
