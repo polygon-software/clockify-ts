@@ -27,7 +27,7 @@ var Summary = (function (_super) {
         return _this;
     }
     Summary.prototype.resourceSubPath = function () {
-        return "/workspaces/" + this.workspaceId + "/reports/summary";
+        return "/workspaces/".concat(this.workspaceId, "/reports/summary");
     };
     Summary.prototype.post = function (data) {
         return this.axiosPost(data, {});

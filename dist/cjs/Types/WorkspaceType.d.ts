@@ -1,5 +1,5 @@
 import type { MembershipType } from "./MembershipType";
-declare type WorkspaceType = {
+type WorkspaceType = {
     "hourlyRate": {
         "amount": number;
         "currency": string;

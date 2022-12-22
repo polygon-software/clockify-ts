@@ -1,4 +1,4 @@
-declare type UpdateClientType = {
+type UpdateClientType = {
     name: string;
     archived: boolean;
 };

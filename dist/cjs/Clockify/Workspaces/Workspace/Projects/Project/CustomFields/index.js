@@ -29,7 +29,7 @@ var CustomFields = (function (_super) {
         return _this;
     }
     CustomFields.prototype.resourceSubPath = function () {
-        return "/workspaces/" + this.workspaceId + "/projects/" + this.projectId + "/custom-fields";
+        return "/workspaces/".concat(this.workspaceId, "/projects/").concat(this.projectId, "/custom-fields");
     };
     CustomFields.prototype.withId = function (customFieldId) {
         return new CustomField_1.default(this._apiKey, this.workspaceId, this.projectId, customFieldId);

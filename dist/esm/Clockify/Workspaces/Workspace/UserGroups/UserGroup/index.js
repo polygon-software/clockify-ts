@@ -24,7 +24,7 @@ var UserGroup = (function (_super) {
         return _this;
     }
     UserGroup.prototype.resourceSubPath = function () {
-        return "/workspaces/" + this.workspaceId + "/user-groups/" + this.userGroupId;
+        return "/workspaces/".concat(this.workspaceId, "/user-groups/").concat(this.userGroupId);
     };
     Object.defineProperty(UserGroup.prototype, "users", {
         get: function () {

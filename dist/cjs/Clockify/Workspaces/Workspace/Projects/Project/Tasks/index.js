@@ -29,7 +29,7 @@ var Tasks = (function (_super) {
         return _this;
     }
     Tasks.prototype.resourceSubPath = function () {
-        return "/workspaces/" + this.workspaceId + "/projects/" + this.projectId + "/tasks";
+        return "/workspaces/".concat(this.workspaceId, "/projects/").concat(this.projectId, "/tasks");
     };
     Tasks.prototype.withId = function (taskId) {
         return new Task_1.default(this._apiKey, this.workspaceId, this.projectId, taskId);

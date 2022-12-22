@@ -27,7 +27,7 @@ var Invoiced = (function (_super) {
         return _this;
     }
     Invoiced.prototype.resourceSubPath = function () {
-        return "/workspaces/" + this.workspaceId + "/time-entries/invoiced";
+        return "/workspaces/".concat(this.workspaceId, "/time-entries/invoiced");
     };
     Invoiced.prototype.patch = function (data) {
         return this.axiosPatch(data, {});

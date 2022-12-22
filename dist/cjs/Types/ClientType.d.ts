@@ -1,4 +1,4 @@
-declare type ClientType = {
+type ClientType = {
     id: string;
     name: string;
     email: string;

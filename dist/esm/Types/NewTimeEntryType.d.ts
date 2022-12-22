@@ -1,4 +1,4 @@
-declare type NewTimeEntryType = {
+type NewTimeEntryType = {
     "start"?: Date;
     "billable"?: boolean;
     "description": string;

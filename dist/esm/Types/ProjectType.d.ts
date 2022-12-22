@@ -1,6 +1,6 @@
 import type { MembershipStatusEnum, MembershipTypeEnum } from "./MembershipType";
 import { BudgetEstimateResetOptionEnum, BudgetEstimateTypeEnum, TimeEstimateResetOptionEnum, TimeEstimateTypeEnum } from "./EstimateType";
-declare type ProjectType = {
+type ProjectType = {
     "id": string;
     "name": string;
     "hourlyRate": null | number;

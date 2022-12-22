@@ -79,7 +79,7 @@ export declare enum RequestDetailedReportTaskStatusFilterEnum {
     active = "ACTIVE",
     done = "DONE"
 }
-declare type RequestDetailedReportType = {
+type RequestDetailedReportType = {
     dateRangeStart: Date;
     dateRangeEnd: Date;
     detailedFilter?: {

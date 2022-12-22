@@ -2,7 +2,7 @@ export declare enum TaskStatusEnum {
     active = "ACTIVE",
     done = "DONE"
 }
-declare type NewTaskType = {
+type NewTaskType = {
     name: string;
     assigneeIds?: Array<string>;
     estimate?: string;

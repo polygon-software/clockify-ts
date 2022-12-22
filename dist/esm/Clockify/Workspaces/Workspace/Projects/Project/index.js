@@ -28,7 +28,7 @@ var Project = (function (_super) {
         return _this;
     }
     Project.prototype.resourceSubPath = function () {
-        return "/workspaces/" + this.workspaceId + "/projects/" + this.projectId;
+        return "/workspaces/".concat(this.workspaceId, "/projects/").concat(this.projectId);
     };
     Object.defineProperty(Project.prototype, "customFields", {
         get: function () {

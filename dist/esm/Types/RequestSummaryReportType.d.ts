@@ -73,7 +73,7 @@ export declare enum RequestSummaryReportTaskStatusFilterEnum {
     active = "ACTIVE",
     done = "DONE"
 }
-declare type RequestSummaryReportType = {
+type RequestSummaryReportType = {
     dateRangeStart: Date;
     dateRangeEnd: Date;
     summaryFilter: {

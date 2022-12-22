@@ -1,4 +1,4 @@
-declare type UserGroupType = {
+type UserGroupType = {
     "id": string;
     "name": string;
     "workspaceId": string;

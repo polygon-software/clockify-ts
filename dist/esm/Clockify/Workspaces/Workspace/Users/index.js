@@ -26,7 +26,7 @@ var Users = (function (_super) {
         return new User(this._apiKey, this.workspaceId, userId);
     };
     Users.prototype.resourceSubPath = function () {
-        return "/workspaces/" + this.workspaceId + "/users";
+        return "/workspaces/".concat(this.workspaceId, "/users");
     };
     Users.prototype.get = function (query) {
         return this.axiosGet(query);

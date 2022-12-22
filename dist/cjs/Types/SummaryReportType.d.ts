@@ -1,4 +1,4 @@
-declare type SummaryReportType = {
+type SummaryReportType = {
     totals: {
         totalTime: number;
         totalBillableTime: number;

@@ -5,7 +5,7 @@ export declare enum RoleEnum {
     user = "USER",
     administrator = "ADMINISTRATOR"
 }
-declare type RoleType = {
+type RoleType = {
     "role": RoleEnum;
     "entities": Array<EntityType>;
 };

@@ -23,7 +23,7 @@ var Template = (function (_super) {
         return _this;
     }
     Template.prototype.resourceSubPath = function () {
-        return "/workspaces/" + this.workspaceId + "/projects/" + this.projectId + "/template";
+        return "/workspaces/".concat(this.workspaceId, "/projects/").concat(this.projectId, "/template");
     };
     Template.prototype.patch = function (data) {
         return this.axiosPatch(data, {});

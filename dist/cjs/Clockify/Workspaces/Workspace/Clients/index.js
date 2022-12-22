@@ -28,7 +28,7 @@ var Clients = (function (_super) {
         return _this;
     }
     Clients.prototype.resourceSubPath = function () {
-        return "/workspaces/" + this.workspaceId + "/clients";
+        return "/workspaces/".concat(this.workspaceId, "/clients");
     };
     Clients.prototype.withId = function (clientId) {
         return new Client_1.default(this._apiKey, this.workspaceId, clientId);

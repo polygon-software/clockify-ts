@@ -1,4 +1,4 @@
-declare type TagType = {
+type TagType = {
     id: string;
     name: string;
     workspaceId: string;

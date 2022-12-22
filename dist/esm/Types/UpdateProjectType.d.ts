@@ -1,4 +1,4 @@
-declare type UpdateProjectType = {
+type UpdateProjectType = {
     "name": string;
     "clientId"?: string;
     "isPublic"?: boolean;
