@@ -18,7 +18,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var RequestsApi_1 = __importDefault(require("../../../../../Api/RequestsApi"));
+var TimeOffApi_1 = __importDefault(require("../../../../../Api/TimeOffApi"));
 var All = (function (_super) {
     __extends(All, _super);
     function All(apiKey, workspaceId) {
@@ -33,6 +33,6 @@ var All = (function (_super) {
         return this.axiosPost(data, {});
     };
     return All;
-}(RequestsApi_1.default));
+}(TimeOffApi_1.default));
 exports.default = All;
 //# sourceMappingURL=index.js.map

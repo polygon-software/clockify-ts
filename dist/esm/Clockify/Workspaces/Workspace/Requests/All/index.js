@@ -13,7 +13,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-import RequestsApi from "../../../../../Api/RequestsApi";
+import TimeOffApi from "../../../../../Api/TimeOffApi";
 var All = (function (_super) {
     __extends(All, _super);
     function All(apiKey, workspaceId) {
@@ -28,6 +28,6 @@ var All = (function (_super) {
         return this.axiosPost(data, {});
     };
     return All;
-}(RequestsApi));
+}(TimeOffApi));
 export default All;
 //# sourceMappingURL=index.js.map
