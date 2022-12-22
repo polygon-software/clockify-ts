@@ -32,14 +32,14 @@ import Clockify from "clockify-ts";
 const Clockify = require("clockify-ts").default;
 ```
 
-**Note:** To use the "import"-syntax, you must use a bundler like [Webpack](https://webpack.js.org/), 
+**Note:** To use the "import"-syntax, you must use a bundler like [Webpack](https://webpack.js.org/),
 [Parel](https://parceljs.org/) or [Vite](https://vitejs.dev/) that can handle ECMAScript modules (ESM).
 
 
 ### Authentication
 
 All communication with the Clockify API needs to be authenticated using a Auth-Token. This token can be generated
-in the [User Settings](https://clockify.me/user/settings) page and needs to be passed to the clockify instance. 
+in the [User Settings](https://clockify.me/user/settings) page and needs to be passed to the clockify instance.
 
 If your workspace is on a subdomain (eg. something.clockify.me), you'll need to generate a new API key in your Profile Settings that will work just for that workspace.
 
@@ -79,9 +79,9 @@ const project: ProjectType = {
 
 ### Features
 
-The following clockify API features are already well implemented and tested. 
+The following clockify API features are already well implemented and tested.
 
-#### Base Endpoints 
+#### Base Endpoints
 
 - Client :heavy_check_mark:
 - Project :heavy_check_mark:
@@ -491,6 +491,23 @@ const detailedQuery: RequestDetailedReportType = {
     detailedFilter: {}
 }
 const report = await clockify.workspaces.withId(testWorkspaceId).reports.detailed.post(detailedQuery);
+```
+
+## Requests
+
+### Get all requests
+
+[API Documentation](https://clockify.me/developers-api#operation--v1-workspaces--workspaceId--timeOff--requests--post)
+
+```typescript
+import type { RequestAllRequestsType } from "clockify-ts";
+const clockify = new Clockify("clockifyApiKey");
+
+const requestsAllQuery: RequestAllRequestsType = {
+    start: new Date(1577836800000), // Jan. 2020
+    end: new Date(1609459199000), // Jan. 2021
+}
+const requests = await clockify.workspaces.withId(testWorkspaceId).requests.all.post(requestsAllQuery);
 ```
 
 ## Query, Types and Enums

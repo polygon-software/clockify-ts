@@ -7,6 +7,7 @@ import CustomFields from "./CustomFields";
 import TimeEntries from "./TimeEntries";
 import UserGroups from "./UserGroups";
 import Reports from "./Reports";
+import Requests from "./Requests";
 
 
 export default class Workspace extends ClockifyAPI {
@@ -52,5 +53,9 @@ export default class Workspace extends ClockifyAPI {
 
   get reports(): Reports {
     return new Reports(this._apiKey, this.workspaceId);
+  }
+
+  get requests(): Requests {
+    return new Requests(this._apiKey, this.workspaceId);
   }
 }
