@@ -22,6 +22,7 @@ import CustomFields from "./CustomFields";
 import TimeEntries from "./TimeEntries";
 import UserGroups from "./UserGroups";
 import Reports from "./Reports";
+import Requests from "./Requests";
 var Workspace = (function (_super) {
     __extends(Workspace, _super);
     function Workspace(apiKey, workspaceId) {
@@ -84,6 +85,13 @@ var Workspace = (function (_super) {
     Object.defineProperty(Workspace.prototype, "reports", {
         get: function () {
             return new Reports(this._apiKey, this.workspaceId);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Workspace.prototype, "requests", {
+        get: function () {
+            return new Requests(this._apiKey, this.workspaceId);
         },
         enumerable: false,
         configurable: true

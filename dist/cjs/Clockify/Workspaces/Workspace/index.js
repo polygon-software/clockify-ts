@@ -27,6 +27,7 @@ var CustomFields_1 = __importDefault(require("./CustomFields"));
 var TimeEntries_1 = __importDefault(require("./TimeEntries"));
 var UserGroups_1 = __importDefault(require("./UserGroups"));
 var Reports_1 = __importDefault(require("./Reports"));
+var Requests_1 = __importDefault(require("./Requests"));
 var Workspace = (function (_super) {
     __extends(Workspace, _super);
     function Workspace(apiKey, workspaceId) {
@@ -89,6 +90,13 @@ var Workspace = (function (_super) {
     Object.defineProperty(Workspace.prototype, "reports", {
         get: function () {
             return new Reports_1.default(this._apiKey, this.workspaceId);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Workspace.prototype, "requests", {
+        get: function () {
+            return new Requests_1.default(this._apiKey, this.workspaceId);
         },
         enumerable: false,
         configurable: true
