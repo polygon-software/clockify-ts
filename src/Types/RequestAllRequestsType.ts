@@ -1,16 +1,16 @@
-export enum RequestAllRequestsStatus {
+export enum RequestAllRequestsStatusEnum {
   pending = "PENDING",
   approved = "APPROVED",
-  descending = "DESCENDING",
+  rejected = "REJECTED",
 }
 
 type RequestAllRequestsType = {
   start: Date,
   end: Date,
-  status: RequestAllRequestsStatus,
+  status: RequestAllRequestsStatusEnum,
   users: string[],
-  userGroups: string[]
-  page: number
+  userGroups: string[],
+  page: number,
   pageSize: number
 }
 

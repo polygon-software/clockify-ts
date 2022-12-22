@@ -1,7 +1,7 @@
-export declare enum AllRequestsStatus {
+export declare enum AllRequestsStatusEnum {
     pending = "PENDING",
     approved = "APPROVED",
-    descending = "DESCENDING"
+    rejected = "REJECTED"
 }
 type AllRequestsType = {
     count: number;
@@ -23,7 +23,7 @@ type AllRequestsType = {
         };
         note: string;
         status: {
-            statusType: AllRequestsStatus;
+            statusType: AllRequestsStatusEnum;
             changedByUserId: string;
             changedByUserName: string;
             changedAt: Date;

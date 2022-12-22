@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.RequestAllRequestsStatus = void 0;
-var RequestAllRequestsStatus;
-(function (RequestAllRequestsStatus) {
-    RequestAllRequestsStatus["pending"] = "PENDING";
-    RequestAllRequestsStatus["approved"] = "APPROVED";
-    RequestAllRequestsStatus["descending"] = "DESCENDING";
-})(RequestAllRequestsStatus = exports.RequestAllRequestsStatus || (exports.RequestAllRequestsStatus = {}));
+exports.RequestAllRequestsStatusEnum = void 0;
+var RequestAllRequestsStatusEnum;
+(function (RequestAllRequestsStatusEnum) {
+    RequestAllRequestsStatusEnum["pending"] = "PENDING";
+    RequestAllRequestsStatusEnum["approved"] = "APPROVED";
+    RequestAllRequestsStatusEnum["rejected"] = "REJECTED";
+})(RequestAllRequestsStatusEnum = exports.RequestAllRequestsStatusEnum || (exports.RequestAllRequestsStatusEnum = {}));
 //# sourceMappingURL=RequestAllRequestsType.js.map

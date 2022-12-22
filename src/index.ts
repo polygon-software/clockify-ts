@@ -22,6 +22,7 @@ import type { UserType } from "./Types/UserType";
 import type { WorkspaceType } from "./Types/WorkspaceType";
 import type { RequestDetailedReportType } from "./Types/RequestDetailedReportType";
 import type { RequestSummaryReportType } from "./Types/RequestSummaryReportType";
+import type { RequestAllRequestsType } from "./Types/RequestAllRequestsType";
 
 import ClientsQuery from "./Queries/ClientsQuery";
 import CustomFieldsQuery from "./Queries/CustomFieldsQuery";
@@ -36,6 +37,9 @@ import UpdateProjectQuery from "./Queries/UpdateProjectQuery";
 import UserGroupQuery from "./Queries/UserGroupQuery";
 import UsersQuery from "./Queries/UsersQuery";
 
+import {
+  RequestAllRequestsStatusEnum
+} from "./Types/RequestAllRequestsType";
 import {
   RequestDetailedReportGroupsEnum,
   RequestDetailedReportTotalOptionEnum,
@@ -115,6 +119,7 @@ export {
   WorkspaceType,
   RequestDetailedReportType,
   RequestSummaryReportType,
+  RequestAllRequestsType,
 
   ClientsQuery,
   CustomFieldsQuery,
@@ -129,6 +134,7 @@ export {
   UserGroupQuery,
   UsersQuery,
 
+  RequestAllRequestsStatusEnum,
   RequestDetailedReportGroupsEnum,
   RequestDetailedReportTotalOptionEnum,
   RequestDetailedReportSortOrderEnum,
