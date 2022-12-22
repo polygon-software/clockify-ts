@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var qs_1 = require("qs");
 var axios_1 = __importDefault(require("axios"));
 var ClockifyError_1 = __importDefault(require("../../ClockifyError"));
-var paramsSerializer = function (params) { return qs_1.stringify(params, {
+var paramsSerializer = function (params) { return (0, qs_1.stringify)(params, {
     arrayFormat: "repeat",
     serializeDate: function (d) { return d.toISOString(); },
 }); };

@@ -1,4 +1,4 @@
-declare type EntityType = {
+type EntityType = {
     "id": string;
     "name": string;
 };

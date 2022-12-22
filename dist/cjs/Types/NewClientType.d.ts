@@ -1,4 +1,4 @@
-declare type NewClientType = {
+type NewClientType = {
     name: string;
 };
 export { NewClientType, };

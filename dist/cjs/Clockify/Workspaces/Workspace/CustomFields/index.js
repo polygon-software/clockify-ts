@@ -27,7 +27,7 @@ var CustomFields = (function (_super) {
         return _this;
     }
     CustomFields.prototype.resourceSubPath = function () {
-        return "/workspaces/" + this.workspaceId + "/custom-fields";
+        return "/workspaces/".concat(this.workspaceId, "/custom-fields");
     };
     CustomFields.prototype.get = function (query) {
         return this.axiosGet(query);

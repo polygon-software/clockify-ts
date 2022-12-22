@@ -10,7 +10,7 @@ export declare enum MembershipTypeEnum {
     usergroup = "USERGROUP",
     all = "ALL"
 }
-declare type MembershipType = {
+type MembershipType = {
     "hourlyRate"?: {
         "amount": number;
         "currency"?: string;

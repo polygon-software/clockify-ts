@@ -24,7 +24,7 @@ var User = (function (_super) {
         return _this;
     }
     User.prototype.resourceSubPath = function () {
-        return "/workspaces/" + this.workspaceId + "/user-groups/" + this.userGroupId + "/users/" + this.userId;
+        return "/workspaces/".concat(this.workspaceId, "/user-groups/").concat(this.userGroupId, "/users/").concat(this.userId);
     };
     User.prototype.delete = function () {
         return this.axiosDelete({});

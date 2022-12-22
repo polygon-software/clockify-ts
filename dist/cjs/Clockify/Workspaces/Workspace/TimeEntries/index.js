@@ -28,7 +28,7 @@ var TimeEntries = (function (_super) {
         return _this;
     }
     TimeEntries.prototype.resourceSubPath = function () {
-        return "/workspaces/" + this.workspaceId + "/time-entries";
+        return "/workspaces/".concat(this.workspaceId, "/time-entries");
     };
     TimeEntries.prototype.withId = function (timeEntryId) {
         return new TimeEntry_1.default(this._apiKey, this.workspaceId, timeEntryId);

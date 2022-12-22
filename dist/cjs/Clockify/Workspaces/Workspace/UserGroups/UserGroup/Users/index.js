@@ -29,7 +29,7 @@ var Users = (function (_super) {
         return _this;
     }
     Users.prototype.resourceSubPath = function () {
-        return "/workspaces/" + this.workspaceId + "/user-groups/" + this.userGroupId + "/users";
+        return "/workspaces/".concat(this.workspaceId, "/user-groups/").concat(this.userGroupId, "/users");
     };
     Users.prototype.withId = function (userId) {
         return new User_1.default(this._apiKey, this.workspaceId, this.userGroupId, userId);

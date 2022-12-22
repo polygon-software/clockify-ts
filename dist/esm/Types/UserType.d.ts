@@ -20,7 +20,7 @@ export declare enum UserStatusEnum {
     declined = "DECLINED",
     inactive = "INACTIVE"
 }
-declare type UserType = {
+type UserType = {
     "activeWorkspace": string;
     "defaultWorkspace": string;
     "email": string;

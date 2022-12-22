@@ -16,7 +16,7 @@ export declare enum CustomFieldProjectDefaultValuesStatusEnum {
     visible = "VISBLE",
     invisible = "INVISIBLE"
 }
-declare type CustomFieldType = {
+type CustomFieldType = {
     "id": string;
     "workspaceId": string;
     "name": string;

@@ -22,7 +22,7 @@ var Detailed = (function (_super) {
         return _this;
     }
     Detailed.prototype.resourceSubPath = function () {
-        return "/workspaces/" + this.workspaceId + "/reports/detailed";
+        return "/workspaces/".concat(this.workspaceId, "/reports/detailed");
     };
     Detailed.prototype.post = function (data) {
         return this.axiosPost(data, {});

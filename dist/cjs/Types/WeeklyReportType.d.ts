@@ -1,4 +1,4 @@
-declare type WeeklyReportType = {
+type WeeklyReportType = {
     totals: {
         totalTime: number;
         totalBillableTime: number;

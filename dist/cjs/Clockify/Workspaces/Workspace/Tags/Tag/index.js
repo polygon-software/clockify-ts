@@ -28,7 +28,7 @@ var Tag = (function (_super) {
         return _this;
     }
     Tag.prototype.resourceSubPath = function () {
-        return "/workspaces/" + this.workspaceId + "/tags/" + this.tagId;
+        return "/workspaces/".concat(this.workspaceId, "/tags/").concat(this.tagId);
     };
     Tag.prototype.put = function (data) {
         return this.axiosPut(data, {});

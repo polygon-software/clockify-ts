@@ -1,4 +1,4 @@
-declare type DetailedReportType = {
+type DetailedReportType = {
     totals: {
         totalTime: number;
         totalBillableTime: number;

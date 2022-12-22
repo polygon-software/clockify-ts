@@ -28,7 +28,7 @@ var Estimate = (function (_super) {
         return _this;
     }
     Estimate.prototype.resourceSubPath = function () {
-        return "/workspaces/" + this.workspaceId + "/projects/" + this.projectId + "/estimate";
+        return "/workspaces/".concat(this.workspaceId, "/projects/").concat(this.projectId, "/estimate");
     };
     Estimate.prototype.patch = function (data) {
         return this.axiosPatch(data, {});

@@ -31,7 +31,7 @@ var User = (function (_super) {
         configurable: true
     });
     User.prototype.resourceSubPath = function () {
-        return "/workspaces/" + this.workspaceId + "/users/" + this.userId;
+        return "/workspaces/".concat(this.workspaceId, "/users/").concat(this.userId);
     };
     User.prototype.put = function (data) {
         return this.axiosPut(data, {});

@@ -23,7 +23,7 @@ var Memberships = (function (_super) {
         return _this;
     }
     Memberships.prototype.resourceSubPath = function () {
-        return "/workspaces/" + this.workspaceId + "/projects/" + this.projectId + "/memberships";
+        return "/workspaces/".concat(this.workspaceId, "/projects/").concat(this.projectId, "/memberships");
     };
     Memberships.prototype.patch = function (data) {
         return this.axiosPatch(data, {});

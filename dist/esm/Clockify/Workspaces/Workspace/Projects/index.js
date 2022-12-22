@@ -23,7 +23,7 @@ var Projects = (function (_super) {
         return _this;
     }
     Projects.prototype.resourceSubPath = function () {
-        return "/workspaces/" + this.workspaceId + "/projects";
+        return "/workspaces/".concat(this.workspaceId, "/projects");
     };
     Projects.prototype.withId = function (projectId) {
         return new Project(this._apiKey, this.workspaceId, projectId);

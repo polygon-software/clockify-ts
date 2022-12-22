@@ -1,4 +1,4 @@
-declare type NewUserType = {
+type NewUserType = {
     email: string;
 };
 export { NewUserType, };

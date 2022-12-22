@@ -30,7 +30,7 @@ var Workspace = (function (_super) {
         return _this;
     }
     Workspace.prototype.resourceSubPath = function () {
-        return "/workspaces/" + this.workspaceId;
+        return "/workspaces/".concat(this.workspaceId);
     };
     Object.defineProperty(Workspace.prototype, "clients", {
         get: function () {
